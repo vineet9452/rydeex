@@ -52,7 +52,7 @@ export const models: EVModel[] = [
     tag: "New Arrival",
     tagColor: "bg-accent-yellow text-black",
     highlight: "Best Seller",
-    image: "/evies/ev1.webp",
+    image: "/evies/ev1.png",
     heroAccent: "from-red-950/40 via-gray-950 to-gray-950",
     accentColor: "#dd2b1c",
 
@@ -161,7 +161,7 @@ export const models: EVModel[] = [
     tag: null,
     tagColor: "",
     highlight: "City Favourite",
-    image: "/evies/ev2.webp",
+    image: "/evies/ev2.png",
     heroAccent: "from-slate-900/60 via-gray-950 to-gray-950",
     accentColor: "#3c2b99",
 
@@ -270,7 +270,7 @@ export const models: EVModel[] = [
     tag: "Performance",
     tagColor: "bg-accent-red text-white",
     highlight: "Flagship",
-    image: "/evies/ev3.webp",
+    image: "/evies/ev3.png",
     heroAccent: "from-blue-950/50 via-gray-950 to-gray-950",
     accentColor: "#1565c0",
 
@@ -367,6 +367,240 @@ export const models: EVModel[] = [
       "160 km range — best in segment by 25%",
       "OTA software updates — gets better over time",
       "5-year flagship warranty package"
+    ]
+  },
+
+  {
+    slug: "eco-plus",
+    name: "RYDEEX Eco Plus",
+    tagline: "Sustainable & Stylish.",
+    description: "The Eco Plus combines eco-friendly commuting with smooth curves and an elegant look. Perfect for daily commutes with a focus on sustainability.",
+    tag: "Eco Friendly",
+    tagColor: "bg-emerald-500 text-white",
+    highlight: "Green Ride",
+    image: "/evies/ev4.png",
+    heroAccent: "from-emerald-950/40 via-gray-950 to-gray-950",
+    accentColor: "#10b981",
+
+    price: "₹65,000",
+    priceNote: "Ex-showroom · Greater Noida",
+
+    quickSpecs: [
+      { label: "Top Speed", value: "55 km/h", icon: "⚡" },
+      { label: "Range",     value: "100 km",  icon: "🔋" },
+      { label: "Battery",   value: "3.2 kWh", icon: "🔌" },
+      { label: "Charge",    value: "4.5 hrs", icon: "⏱" }
+    ],
+
+    specs: [
+      {
+        category: "Performance",
+        items: [
+          { label: "Motor Type",   value: "BLDC Hub Motor" },
+          { label: "Peak Power",   value: "1500", unit: "W" },
+          { label: "Top Speed",    value: "55",  unit: "km/h" },
+          { label: "Acceleration", value: "0–40 in 7.0", unit: "sec" }
+        ]
+      },
+      {
+        category: "Battery & Range",
+        items: [
+          { label: "Battery Capacity", value: "3.2",   unit: "kWh" },
+          { label: "Certified Range",  value: "100", unit: "km" },
+          { label: "Charge Time",      value: "4.5",   unit: "hrs" },
+          { label: "Charging",         value: "Standard 5A" }
+        ]
+      },
+      {
+        category: "Build & Dimensions",
+        items: [
+          { label: "Kerb Weight", value: "90",  unit: "kg" },
+          { label: "Seat Height", value: "760",  unit: "mm" },
+          { label: "Boot Space",  value: "22",   unit: "L" },
+          { label: "Brakes",      value: "Dual Drum" }
+        ]
+      },
+      {
+        category: "Technology",
+        items: [
+          { label: "Display",      value: "LCD Dashboard" },
+          { label: "Navigation",   value: "N/A" },
+          { label: "Connectivity", value: "Basic App" },
+          { label: "Modes",        value: "Eco · Normal" }
+        ]
+      }
+    ],
+
+    features: [
+      { title: "Eco-Friendly", desc: "Designed with sustainable materials.", icon: "🌱" },
+      { title: "High Efficiency", desc: "Optimized battery for maximum range.", icon: "🔋" }
+    ],
+
+    colors: [
+      { name: "Mint Green", hex: "#a7f3d0" },
+      { name: "Matte White", hex: "#ffffff" }
+    ],
+
+    whyThis: [
+      "Environmentally conscious design",
+      "Very affordable pricing",
+      "Reliable and lightweight"
+    ]
+  },
+
+  {
+    slug: "turbo-s",
+    name: "RYDEEX Turbo S",
+    tagline: "Track-ready Performance.",
+    description: "Racing-inspired design with an aggressive stance and premium sport look. Unleash maximum speed with the Turbo S.",
+    tag: "Top Speed",
+    tagColor: "bg-orange-500 text-white",
+    highlight: "Race Edition",
+    image: "/evies/ev5.png",
+    heroAccent: "from-orange-950/40 via-gray-950 to-gray-950",
+    accentColor: "#f97316",
+
+    price: "₹1,65,000",
+    priceNote: "Ex-showroom · Greater Noida",
+
+    quickSpecs: [
+      { label: "Top Speed", value: "120 km/h", icon: "⚡" },
+      { label: "Range",     value: "180 km",   icon: "🔋" },
+      { label: "Battery",   value: "7.2 kWh",  icon: "🔌" },
+      { label: "Charge",    value: "6 hrs",    icon: "⏱" }
+    ],
+
+    specs: [
+      {
+        category: "Performance",
+        items: [
+          { label: "Motor Type",   value: "PMSM Mid-Drive Motor" },
+          { label: "Peak Power",   value: "8000", unit: "W" },
+          { label: "Top Speed",    value: "120",  unit: "km/h" },
+          { label: "Acceleration", value: "0–60 in 3.9", unit: "sec" }
+        ]
+      },
+      {
+        category: "Battery & Range",
+        items: [
+          { label: "Battery Capacity", value: "7.2",   unit: "kWh" },
+          { label: "Certified Range",  value: "180", unit: "km" },
+          { label: "Charge Time",      value: "6",   unit: "hrs" },
+          { label: "Charging",         value: "Fast Charge 20A Compatible" }
+        ]
+      },
+      {
+        category: "Build & Dimensions",
+        items: [
+          { label: "Kerb Weight", value: "145",  unit: "kg" },
+          { label: "Seat Height", value: "795",  unit: "mm" },
+          { label: "Boot Space",  value: "25",   unit: "L" },
+          { label: "Brakes",      value: "Dual Hydraulic Disc" }
+        ]
+      },
+      {
+        category: "Technology",
+        items: [
+          { label: "Display",      value: "12\" Full-Color TFT" },
+          { label: "Navigation",   value: "Built-in GPS + Live Traffic" },
+          { label: "Connectivity", value: "Bluetooth 5.2 + WiFi OTA" },
+          { label: "Modes",        value: "City · Sport · Track" }
+        ]
+      }
+    ],
+
+    features: [
+      { title: "Mid-Drive Motor", desc: "For optimal weight distribution and performance.", icon: "⚙️" },
+      { title: "Track Mode", desc: "Unlock maximum torque for unparalleled acceleration.", icon: "🏁" }
+    ],
+
+    colors: [
+      { name: "Neon Orange", hex: "#fb923c" },
+      { name: "Matte Black", hex: "#000000" }
+    ],
+
+    whyThis: [
+      "Extreme performance and top speed",
+      "Mid-drive motor architecture",
+      "Premium race-inspired components"
+    ]
+  },
+
+  {
+    slug: "cruiser-v",
+    name: "RYDEEX Cruiser V",
+    tagline: "Classic Meets Electric.",
+    description: "Retro-modern design in matte burgundy maroon and chrome. The Cruiser V blends timeless elegance with modern electric efficiency.",
+    tag: "Classic",
+    tagColor: "bg-amber-700 text-white",
+    highlight: "Retro Style",
+    image: "/evies/ev6.png",
+    heroAccent: "from-amber-950/40 via-gray-950 to-gray-950",
+    accentColor: "#b45309",
+
+    price: "₹1,15,000",
+    priceNote: "Ex-showroom · Greater Noida",
+
+    quickSpecs: [
+      { label: "Top Speed", value: "70 km/h", icon: "⚡" },
+      { label: "Range",     value: "140 km",   icon: "🔋" },
+      { label: "Battery",   value: "5 kWh",    icon: "🔌" },
+      { label: "Charge",    value: "4.5 hrs",  icon: "⏱" }
+    ],
+
+    specs: [
+      {
+        category: "Performance",
+        items: [
+          { label: "Motor Type",   value: "BLDC Hub Motor" },
+          { label: "Peak Power",   value: "4000", unit: "W" },
+          { label: "Top Speed",    value: "70",  unit: "km/h" },
+          { label: "Acceleration", value: "0–40 in 5.2", unit: "sec" }
+        ]
+      },
+      {
+        category: "Battery & Range",
+        items: [
+          { label: "Battery Capacity", value: "5",   unit: "kWh" },
+          { label: "Certified Range",  value: "140", unit: "km" },
+          { label: "Charge Time",      value: "4.5",   unit: "hrs" },
+          { label: "Charging",         value: "Standard 5A/15A Compatible" }
+        ]
+      },
+      {
+        category: "Build & Dimensions",
+        items: [
+          { label: "Kerb Weight", value: "125",  unit: "kg" },
+          { label: "Seat Height", value: "750",  unit: "mm" },
+          { label: "Boot Space",  value: "30",   unit: "L" },
+          { label: "Brakes",      value: "Front Disc / Rear Drum" }
+        ]
+      },
+      {
+        category: "Technology",
+        items: [
+          { label: "Display",      value: "Round Digital-Analog LCD" },
+          { label: "Navigation",   value: "Turn-by-Turn GPS" },
+          { label: "Connectivity", value: "Bluetooth 5.0" },
+          { label: "Modes",        value: "Eco · Cruise" }
+        ]
+      }
+    ],
+
+    features: [
+      { title: "Retro Styling", desc: "Classic lines with modern chrome finishes.", icon: "🛵" },
+      { title: "Comfort Seat", desc: "Plush leather-finish seating for long rides.", icon: "💺" }
+    ],
+
+    colors: [
+      { name: "Burgundy Maroon", hex: "#7a1a2e" },
+      { name: "Chrome Silver", hex: "#e2e8f0" }
+    ],
+
+    whyThis: [
+      "Timeless aesthetic appeal",
+      "Very comfortable for relaxed riding",
+      "Massive 30L under-seat storage"
     ]
   }
 ];

@@ -11,7 +11,7 @@ export default function StatsSection() {
       <div
         className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage: "radial-gradient(circle at 20% 50%, #ffffff 0%, transparent 60%), radial-gradient(circle at 80% 50%, #dd2b1c 0%, transparent 60%)"
+          backgroundImage: "radial-gradient(circle at 20% 50%, #3a5edb 0%, transparent 60%), radial-gradient(circle at 80% 50%, #DD2B1C 0%, transparent 60%)"
         }}
       />
       <div className="container mx-auto px-4 relative z-10">

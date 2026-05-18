@@ -10,6 +10,9 @@ const slides = [
     image: "/Hero/slide_red.png",
     title: "RYDEEX X1 Pro",
     subtitle: "Born to Lead.",
+    tagline: "India's sharpest electric scooter. Engineered for riders who demand more from every kilometre.",
+    desc: "Zero emissions. Maximum thrill. The X1 Pro redefines what an electric scooter can be — faster, smarter, and built to last.",
+    features: ["Best-in-class acceleration", "120 km real-world range", "Smart GPS navigation"],
     accent: "#dd2b1c",
     glowFrom: "from-red-600/30",
     glowTo: "to-orange-500/20",
@@ -21,6 +24,9 @@ const slides = [
     image: "/Hero/slide_blue.png",
     title: "RYDEEX City Lite",
     subtitle: "Urban Freedom.",
+    tagline: "Designed for the city that never stops. Lightweight, nimble, and always connected.",
+    desc: "Navigate every lane, every signal, every shortcut with the scooter that was built specifically for Indian city roads.",
+    features: ["Ultra-light alloy frame", "Seamless Bluetooth connect", "90 km city range"],
     accent: "#3b82f6",
     glowFrom: "from-blue-600/30",
     glowTo: "to-cyan-500/20",
@@ -32,6 +38,9 @@ const slides = [
     image: "/Hero/slide_green.png",
     title: "RYDEEX Eco+",
     subtitle: "Go Green. Go Fast.",
+    tagline: "The future of sustainable mobility — without sacrificing a single kilometre of performance.",
+    desc: "Eco+ delivers 140 km of emission-free riding on a single charge. Choose the planet. Keep the speed.",
+    features: ["140 km max eco range", "Regen braking tech", "Carbon-neutral certified"],
     accent: "#22c55e",
     glowFrom: "from-emerald-600/30",
     glowTo: "to-lime-500/20",
@@ -43,6 +52,9 @@ const slides = [
     image: "/Hero/slide_gold.png",
     title: "RYDEEX RS MAX",
     subtitle: "Pure Dominance.",
+    tagline: "When performance is non-negotiable. The RS MAX is built for riders who refuse to slow down.",
+    desc: "105 km/h top speed. 160 km flagship range. A full-colour smart dashboard. This is the peak of what electric can be.",
+    features: ["105 km/h top speed", "Flagship 6 kWh battery", "Race-tuned suspension"],
     accent: "#f59e0b",
     glowFrom: "from-amber-500/30",
     glowTo: "to-yellow-400/20",
@@ -83,7 +95,7 @@ export default function HeroSlider() {
   const slide = slides[current];
 
   return (
-    <section className="relative h-screen w-full flex flex-col justify-end overflow-hidden bg-[#080810]">
+    <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden bg-[#080810]">
       {/* ── BACKGROUND IMAGES (CROSS-FADE) ── */}
       {slides.map((s, i) => (
         <div
@@ -103,7 +115,7 @@ export default function HeroSlider() {
 
       {/* ── GRADIENT OVERLAYS ── */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#080810] via-[#080810]/40 to-transparent" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080810]/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080810]/80 via-[#080810]/30 to-transparent" />
 
       {/* ── ANIMATED ACCENT GLOW ── */}
       <div
@@ -111,22 +123,19 @@ export default function HeroSlider() {
       />
 
       {/* ── CONTENT ── */}
-      <div className="container relative z-10 mx-auto px-4 pb-24 pt-32">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-end justify-between gap-10">
-          {/* Left */}
-          <div className="text-left w-full lg:w-auto">
+      <div className="container relative z-10 mx-auto px-4 pt-20 pb-28">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
+
+          {/* ── LEFT ── */}
+          <div className="text-left w-full lg:max-w-[560px]">
+
             {/* Model Badge */}
             <div
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 border backdrop-blur-md transition-all duration-500"
-              style={{
-                borderColor: `${slide.accent}55`,
-                backgroundColor: `${slide.accent}15`,
-              }}
+              key={`badge-${current}`}
+              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 border backdrop-blur-md animate-heroFadeUp"
+              style={{ borderColor: `${slide.accent}55`, backgroundColor: `${slide.accent}18` }}
             >
-              <span
-                className="w-2 h-2 rounded-full animate-pulse"
-                style={{ backgroundColor: slide.accent }}
-              />
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: slide.accent }} />
               <span className="text-xs font-bold tracking-[0.15em] uppercase text-white/90">
                 {slide.title}
               </span>
@@ -135,50 +144,80 @@ export default function HeroSlider() {
             {/* Headline */}
             <h1
               key={`title-${current}`}
-              className="font-montserrat font-black text-5xl md:text-6xl lg:text-7xl text-white mb-3 uppercase tracking-tight leading-[0.95] animate-heroFadeUp"
+              className="font-montserrat font-black text-5xl md:text-6xl lg:text-[5.5rem] text-white mb-3 uppercase tracking-tight leading-[0.92] animate-heroFadeUp"
             >
-              {slide.subtitle.split(" ").map((word, wi) => (
+              {slide.subtitle.split(" ").map((word, wi, arr) => (
                 <span key={wi}>
-                  {wi === slide.subtitle.split(" ").length - 1 ? (
-                    <span style={{ color: slide.accent }}>{word}</span>
-                  ) : (
-                    word
-                  )}{" "}
+                  {wi === arr.length - 1
+                    ? <span style={{ color: slide.accent }}>{word}</span>
+                    : word}{" "}
                 </span>
               ))}
             </h1>
 
-            <p className="text-gray-400 text-lg max-w-md mb-8 font-medium animate-heroFadeUp animation-delay-100">
-              Zero emissions. Maximum thrill. Experience the RYDEEX revolution
-              on two wheels.
+            {/* Tagline */}
+            <p
+              key={`tagline-${current}`}
+              className="text-white/70 text-base font-semibold max-w-lg mb-3 leading-snug animate-heroFadeUp animation-delay-100"
+            >
+              {slide.tagline}
             </p>
 
+            {/* Description */}
+            <p
+              key={`desc-${current}`}
+              className="text-gray-400 text-sm max-w-md mb-6 leading-relaxed animate-heroFadeUp animation-delay-200"
+            >
+              {slide.desc}
+            </p>
+
+            {/* Feature bullets */}
+            <ul
+              key={`features-${current}`}
+              className="flex flex-col gap-2 mb-8 animate-heroFadeUp animation-delay-300"
+            >
+              {slide.features.map((feat) => (
+                <li key={feat} className="flex items-center gap-2.5 text-sm text-white/75 font-medium">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: slide.accent }}
+                  />
+                  {feat}
+                </li>
+              ))}
+            </ul>
+
             {/* CTAs */}
-            <div className="flex gap-4 animate-heroFadeUp animation-delay-200">
+            <div className="flex flex-wrap gap-4 mb-8 animate-heroFadeUp animation-delay-300">
               <Link
                 href="#test-ride"
-                className="group relative overflow-hidden text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 hover:shadow-lg"
+                className="group text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 hover:shadow-lg hover:scale-[1.03]"
                 style={{ backgroundColor: slide.accent }}
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  Book Test Ride{" "}
-                  <ArrowRight
-                    size={16}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </span>
+                Book Test Ride
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="#models"
-                className="backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300 flex items-center gap-2"
+                className="backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300"
               >
                 Explore All Models
               </Link>
             </div>
+
+            {/* Trust badges */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2 animate-heroFadeUp animation-delay-300">
+              {["3 Year Warranty", "Free Test Ride", "EMI Available", "Made in India"].map((t) => (
+                <span key={t} className="flex items-center gap-1.5 text-[11px] font-semibold text-white/40 uppercase tracking-wider">
+                  <span className="w-1 h-1 rounded-full bg-white/30" />
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Right – Specs + Nav */}
-          <div className="flex flex-col items-end gap-6 w-full lg:w-auto">
+          {/* ── RIGHT – Specs + Nav ── */}
+          <div className="flex flex-col items-end gap-6 w-full lg:w-auto lg:self-end lg:mb-4">
             {/* Specs */}
             <div
               key={`specs-${current}`}

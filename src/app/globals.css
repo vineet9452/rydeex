@@ -1,37 +1,132 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════
+   RYDEEX BRAND TOKENS
+   Blue  #1535CC  — "RYDEE" wordmark
+   Red   #DD2B1C  — "X" + speed accent
+   Gold  #F5A200  — "ELECTRIC SCOOTER" tag
+═══════════════════════════════════════ */
 @theme {
-  --color-primary: #3c2b99;
-  --color-accent-red: #dd2b1c;
-  --color-accent-yellow: #fbe116;
-  --color-bg-light: #F8F9FA;
-  --color-bg-dark: #0a0a0f;
+  /* ── Fonts ── */
+  --font-sans:       var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading:    var(--font-montserrat), ui-sans-serif, sans-serif;
+
+  /* ── Core brand ── */
+  --color-primary:       #1535CC;
+  --color-primary-dark:  #0f27a8;
+  --color-primary-light: #3a5edb;
+
+  --color-accent-red:      #DD2B1C;
+  --color-accent-red-dark: #b82215;
+
+  --color-accent-gold:   #F5A200;
+  --color-accent-yellow: #F5A200;
+
+  /* ── Surfaces ── */
+  --color-bg-light: #F5F5F7;
+  --color-bg-dark:  #0a0a0f;
+  --color-surface:  #ffffff;
 }
 
 @layer base {
   :root {
     --background: var(--color-bg-light);
-    --foreground: #121212;
+    --foreground: #111118;
   }
 }
 
+/* ── Body ── */
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-sans);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-heading);
 }
 
-/* Custom scrollbar */
+/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #3c2b99; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #dd2b1c; }
+::-webkit-scrollbar-track { background: #f0f0f0; }
+::-webkit-scrollbar-thumb { background: #1535CC; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #DD2B1C; }
 
-/* Marquee */
+/* ══════════════════════════════════════
+   GRADIENT TEXT UTILITIES
+══════════════════════════════════════ */
+
+/* Blue brand gradient (primary headings) */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #1535CC 0%, #3a5edb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Keep "purple" alias → now uses brand blue */
+.text-gradient-purple {
+  background: linear-gradient(135deg, #1535CC 0%, #3a5edb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Red/accent gradient */
+.text-gradient-red {
+  background: linear-gradient(135deg, #DD2B1C 0%, #ff6b5b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold gradient */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F5A200 0%, #ffd166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tri-color brand gradient (blue → red) */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #1535CC 0%, #DD2B1C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══════════════════════════════════════
+   BACKGROUND GRADIENT UTILITIES
+══════════════════════════════════════ */
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #1535CC 0%, #DD2B1C 100%);
+}
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #1535CC 0%, #3a5edb 100%);
+}
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #F5A200 0%, #ffd166 100%);
+}
+
+/* ══════════════════════════════════════
+   GLOW UTILITIES
+══════════════════════════════════════ */
+@keyframes pulse-red-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(221, 43, 28, 0.35); }
+  50%       { box-shadow: 0 0 55px rgba(221, 43, 28, 0.75); }
+}
+.glow-red { animation: pulse-red-glow 2.5s ease-in-out infinite; }
+
+@keyframes pulse-blue-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(21, 53, 204, 0.35); }
+  50%       { box-shadow: 0 0 55px rgba(21, 53, 204, 0.65); }
+}
+.glow-blue { animation: pulse-blue-glow 2.5s ease-in-out infinite; }
+
+/* ══════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════ */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -39,35 +134,18 @@ h1, h2, h3, h4, h5, h6 {
 .animate-marquee      { animation: marquee 35s linear infinite; display: flex; width: max-content; }
 .animate-marquee-fast { animation: marquee 22s linear infinite; display: flex; width: max-content; }
 
-/* Glow */
-@keyframes pulse-red-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(221, 43, 28, 0.35); }
-  50%       { box-shadow: 0 0 55px rgba(221, 43, 28, 0.75); }
-}
-.glow-red { animation: pulse-red-glow 2.5s ease-in-out infinite; }
-
-/* Float */
+/* ══════════════════════════════════════
+   FLOAT ANIMATION
+══════════════════════════════════════ */
 @keyframes float-y {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-10px); }
 }
 .animate-float { animation: float-y 5s ease-in-out infinite; }
 
-/* Gradient text */
-.text-gradient-red {
-  background: linear-gradient(135deg, #dd2b1c 0%, #ff6b5b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-gradient-purple {
-  background: linear-gradient(135deg, #3c2b99 0%, #7c5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Card hover lift */
+/* ══════════════════════════════════════
+   CARD LIFT
+══════════════════════════════════════ */
 .card-lift {
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
@@ -76,7 +154,9 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.14);
 }
 
-/* Eyebrow label */
+/* ══════════════════════════════════════
+   EYEBROW LABEL
+══════════════════════════════════════ */
 .eyebrow {
   font-size: 0.68rem;
   font-weight: 700;
@@ -84,16 +164,12 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-/* Hero Slider Animations */
+/* ══════════════════════════════════════
+   HERO SLIDER ANIMATIONS
+══════════════════════════════════════ */
 @keyframes heroFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .animate-heroFadeUp {
   animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -107,8 +183,40 @@ h1, h2, h3, h4, h5, h6 {
   animation: dotProgress 4.5s linear forwards;
 }
 
-/* Animation delays */
+/* ══════════════════════════════════════
+   ANIMATION DELAYS
+══════════════════════════════════════ */
 .animation-delay-100 { animation-delay: 100ms; }
 .animation-delay-200 { animation-delay: 200ms; }
 .animation-delay-300 { animation-delay: 300ms; }
 
+/* ══════════════════════════════════════
+   BRAND BUTTON STYLES
+══════════════════════════════════════ */
+.btn-primary {
+  background: #1535CC;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  padding: 0.875rem 2rem;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  background: #0f27a8;
+  box-shadow: 0 0 28px rgba(21, 53, 204, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-red {
+  background: #DD2B1C;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  padding: 0.875rem 2rem;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.btn-red:hover {
+  background: #b82215;
+  box-shadow: 0 0 28px rgba(221, 43, 28, 0.50);
+  transform: translateY(-1px);
+}

@@ -6,9 +6,9 @@ const features = [
     icon: <Leaf size={36} />,
     title: "Zero Emissions",
     desc: "Protect your city's air. Ride electric and cut your daily carbon footprint without sacrificing speed or range.",
-    headerFrom: "#0d1f1a",
-    headerTo: "#0a1512",
-    accent: "#10b981",
+    headerFrom: "#080e2a",
+    headerTo: "#0c1440",
+    accent: "#1535CC",          // brand blue
     stat: "0g CO₂",
     statLabel: "per km"
   },
@@ -17,9 +17,9 @@ const features = [
     icon: <Wrench size={36} />,
     title: "Low Maintenance",
     desc: "No oil changes. No spark plugs. Direct drive motors mean fewer parts and dramatically lower running costs.",
-    headerFrom: "#0f0f1f",
-    headerTo: "#0a0a18",
-    accent: "#6366f1",
+    headerFrom: "#200808",
+    headerTo: "#160505",
+    accent: "#DD2B1C",          // brand red
     stat: "80%",
     statLabel: "lower service cost"
   },
@@ -28,9 +28,9 @@ const features = [
     icon: <LayoutDashboard size={36} />,
     title: "Smart Dashboard",
     desc: "GPS navigation, Bluetooth, ride analytics — all on a full-color touch display built for the connected rider.",
-    headerFrom: "#1f0d0d",
-    headerTo: "#150808",
-    accent: "#dd2b1c",
+    headerFrom: "#1a1200",
+    headerTo: "#120d00",
+    accent: "#F5A200",          // brand gold
     stat: "7\"",
     statLabel: "full-color display"
   }

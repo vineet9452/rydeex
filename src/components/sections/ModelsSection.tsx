@@ -8,7 +8,7 @@ const models = [
     name: "RYDEEX X1 Pro",
     speed: "80 km/h", range: "120 km", battery: "4 kWh",
     tag: "New Arrival", tagColor: "bg-accent-yellow text-black",
-    image: "/evies/ev1.webp",
+    image: "/evies/ev1.png",
     highlight: "Best Seller"
   },
   {
@@ -16,7 +16,7 @@ const models = [
     name: "RYDEEX City Lite",
     speed: "60 km/h", range: "90 km", battery: "3 kWh",
     tag: null, tagColor: "",
-    image: "/evies/ev2.webp",
+    image: "/evies/ev2.png",
     highlight: "City Favourite"
   },
   {
@@ -24,8 +24,32 @@ const models = [
     name: "RYDEEX RS MAX",
     speed: "105 km/h", range: "160 km", battery: "6 kWh",
     tag: "Performance", tagColor: "bg-accent-red text-white",
-    image: "/evies/ev3.webp",
+    image: "/evies/ev3.png",
     highlight: "Flagship"
+  },
+  {
+    slug: "eco-plus",
+    name: "RYDEEX Eco Plus",
+    speed: "55 km/h", range: "100 km", battery: "3.2 kWh",
+    tag: "Eco Friendly", tagColor: "bg-emerald-500 text-white",
+    image: "/evies/ev4.png",
+    highlight: "Green Ride"
+  },
+  {
+    slug: "turbo-s",
+    name: "RYDEEX Turbo S",
+    speed: "120 km/h", range: "180 km", battery: "7.2 kWh",
+    tag: "Top Speed", tagColor: "bg-orange-500 text-white",
+    image: "/evies/ev5.png",
+    highlight: "Race Edition"
+  },
+  {
+    slug: "cruiser-v",
+    name: "RYDEEX Cruiser V",
+    speed: "70 km/h", range: "140 km", battery: "5 kWh",
+    tag: "Classic", tagColor: "bg-amber-700 text-white",
+    image: "/evies/ev6.png",
+    highlight: "Retro Style"
   }
 ];
 
@@ -46,7 +70,7 @@ export default function ModelsSection() {
         <div data-aos="fade-up" className="max-w-2xl mx-auto text-center mb-20">
           <p className="eyebrow text-accent-red mb-3">Our Lineup</p>
           <h2 className="font-montserrat font-black text-4xl md:text-5xl text-white mb-4">
-            Three Models.<br />
+            Six Models.<br />
             <span className="text-gradient-red">One Revolution.</span>
           </h2>
           <p className="text-gray-400 text-lg">Choose the RYDEEX that matches your ride.</p>
@@ -70,14 +94,14 @@ export default function ModelsSection() {
                 {model.highlight}
               </div>
 
-              <div className="relative h-56 w-full overflow-hidden bg-gradient-to-b from-gray-800 to-gray-900">
+              <div className="relative h-60 w-full overflow-hidden bg-gradient-to-b from-gray-800 to-gray-900">
                 <Image
                   src={model.image}
                   alt={model.name}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f]/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f]/70 to-transparent pointer-events-none" />
               </div>
 
               <div className="p-6">
