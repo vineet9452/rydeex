@@ -6,6 +6,17 @@ export default function Footer() {
 
   return (
     <>
+      {/* Above footer brand image */}
+      <div className="w-full bg-[#0a0a0f]">
+        <Image
+          src="/footer/belowfoot.png"
+          alt="RYDEEX"
+          width={1920}
+          height={600}
+          className="w-full h-auto object-contain"
+        />
+      </div>
+
       <footer className="bg-[#0a0a0f] text-white relative overflow-hidden">
         {/* Subtle gradient glow top */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -138,16 +149,6 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Below footer brand image */}
-      <div className="w-full bg-[#0a0a0f]">
-        <Image
-          src="/footer/belowfoot.png"
-          alt="RYDEEX"
-          width={1920}
-          height={600}
-          className="w-full h-auto object-contain"
-        />
-      </div>
     </>
   );
 }

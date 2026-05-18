@@ -6,10 +6,10 @@ export default function GallerySection() {
       <div className="container mx-auto px-4">
         <div data-aos="fade-up" className="flex flex-col items-center text-center mb-14 gap-4">
           <p className="eyebrow text-accent-red">RYDEEX In Action</p>
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 leading-tight whitespace-nowrap">
+          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 leading-tight">
             The city is <span className="text-gradient-red">yours.</span>
           </h2>
-          <p className="text-gray-500 text-base whitespace-nowrap">
+          <p className="text-gray-500 text-base">
             Experience the ride from every angle. Built for the streets, designed for attention.
           </p>
         </div>
