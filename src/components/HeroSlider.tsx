@@ -95,7 +95,7 @@ export default function HeroSlider() {
             src={s.image}
             alt={s.title}
             fill
-            className="object-contain object-bottom"
+            className="object-cover object-center"
             priority={i === 0}
           />
         </div>
