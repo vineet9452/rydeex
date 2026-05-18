@@ -1,4 +1,4 @@
-import { Leaf, Wrench, LayoutDashboard } from "lucide-react";
+import { Leaf, Wrench, LayoutDashboard, BatteryCharging } from "lucide-react";
 
 const features = [
   {
@@ -33,6 +33,17 @@ const features = [
     accent: "#F5A200",          // brand gold
     stat: "7\"",
     statLabel: "full-color display"
+  },
+  {
+    num: "04",
+    icon: <BatteryCharging size={36} />,
+    title: "Fast Charging",
+    desc: "Go from 0 to 80% in under 2 hours. Our smart charging system protects battery health for the long run.",
+    headerFrom: "#001a0e",
+    headerTo: "#00120a",
+    accent: "#00C26F",          // brand green
+    stat: "2hr",
+    statLabel: "0–80% charge"
   }
 ];
 
@@ -45,7 +56,7 @@ export default function FeaturesSection() {
         <div data-aos="fade-up" className="max-w-2xl mx-auto text-center mb-20">
           <p className="eyebrow text-accent-red mb-3 mx-auto">Why Go Electric</p>
           <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 mb-4 whitespace-nowrap">
-            Built different. <span className="text-gradient-purple">Engineered smarter.</span>
+            Built different. <span className="text-gradient-red">Engineered smarter.</span>
           </h2>
           <p className="text-gray-500 text-lg">
             Every RYDEEX model is designed around the rider — not the engine.
@@ -53,13 +64,13 @@ export default function FeaturesSection() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {features.map((f, idx) => (
             <div
               key={idx}
               data-aos="fade-up"
               data-aos-delay={idx * 100}
-              className="group rounded-2xl overflow-hidden bg-white shadow-[0_2px_24px_rgba(0,0,0,0.07)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.13)] transition-all duration-500 hover:-translate-y-1.5"
+              className="group rounded-2xl overflow-hidden bg-white shadow-[0_2px_24px_rgba(0,0,0,0.07)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.13)] transition-all duration-500"
             >
               {/* ── Dark Header Zone ── */}
               <div

@@ -191,15 +191,18 @@ export default function HeroSlider() {
             <div className="flex flex-wrap gap-4 mb-8 animate-heroFadeUp animation-delay-300">
               <Link
                 href="#test-ride"
-                className="group text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 hover:shadow-lg hover:scale-[1.03]"
+                className="group relative overflow-hidden text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-[1.03] cursor-pointer"
                 style={{ backgroundColor: slide.accent }}
               >
-                Book Test Ride
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10 group-hover:text-[#080810] transition-colors duration-300 flex items-center gap-2">
+                  Book Test Ride
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </span>
               </Link>
               <Link
                 href="#models"
-                className="backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300"
+                className="backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer"
               >
                 Explore All Models
               </Link>

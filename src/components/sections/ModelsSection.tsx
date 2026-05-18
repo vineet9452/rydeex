@@ -75,7 +75,7 @@ export default function ModelsSection() {
           <p className="text-gray-400 text-lg">Choose the RYDEEX that matches your ride.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 max-w-5xl mx-auto">
           {models.map((model, idx) => (
             <div
               key={idx}
@@ -98,7 +98,7 @@ export default function ModelsSection() {
                   src={model.image}
                   alt={model.name}
                   fill
-                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-700"
+                  className="object-contain p-1 group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f]/70 to-transparent pointer-events-none" />
               </div>
@@ -121,13 +121,13 @@ export default function ModelsSection() {
                 <div className="flex items-center gap-3">
                   <Link
                     href={`/models/${model.slug}`}
-                    className="flex-1 text-center bg-accent-red text-white font-bold py-3 rounded-xl hover:bg-red-600 hover:shadow-[0_0_20px_rgba(221,43,28,0.5)] transition-all duration-300 text-sm"
+                    className="flex-1 text-center bg-accent-red text-white font-bold py-3 rounded-xl hover:bg-white hover:text-accent-red hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] transition-all duration-300 text-sm cursor-pointer"
                   >
                     View Details
                   </Link>
                   <Link
                     href={`/models/${model.slug}`}
-                    className="p-3 border border-white/15 rounded-xl text-white/60 hover:border-white/40 hover:text-white transition-all duration-300"
+                    className="p-3 border border-white/15 rounded-xl text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer"
                   >
                     <ArrowRight size={18} />
                   </Link>

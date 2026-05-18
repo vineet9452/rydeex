@@ -68,7 +68,7 @@ export default function Header() {
           </Link>
           <Link
             href="#test-ride"
-            className="bg-accent-red text-white px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 hover:shadow-[0_0_20px_rgba(221,43,28,0.5)] transition-all duration-300 flex items-center gap-2"
+            className="bg-accent-red text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-white hover:text-accent-red hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-300 flex items-center gap-2 cursor-pointer"
           >
             Book Test Ride
           </Link>

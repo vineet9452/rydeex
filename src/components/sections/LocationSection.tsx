@@ -33,7 +33,7 @@ export default function LocationSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start max-w-5xl mx-auto">
           {/* Info column */}
           <div data-aos="fade-right" className="space-y-5">
             {info.map((item) => (
@@ -53,7 +53,7 @@ export default function LocationSection() {
 
             <Link
               href="#test-ride"
-              className="flex items-center justify-center gap-2 w-full bg-primary text-white font-bold py-4 rounded-2xl hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(60,43,153,0.4)] transition-all duration-300 mt-2"
+              className="flex items-center justify-center gap-2 w-full bg-primary text-white font-bold py-4 rounded-2xl hover:bg-gray-900 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] transition-all duration-300 mt-2 cursor-pointer"
             >
               Book Your Visit <ArrowRight size={18} />
             </Link>
@@ -62,7 +62,7 @@ export default function LocationSection() {
           {/* Map */}
           <div
             data-aos="fade-left"
-            className="h-[500px] rounded-3xl overflow-hidden shadow-xl border border-gray-200"
+            className="h-[380px] rounded-3xl overflow-hidden shadow-xl border-2 border-accent-red"
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112224.23270417631!2d77.42621741549444!3d28.472718817757918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc1f92e423587%3A0xe21f5ebef7052994!2sKnowledge%20Park%20III%2C%20Greater%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1703080000000!5m2!1sen!2sin"

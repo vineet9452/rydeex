@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
 import { models, getModelBySlug } from "@/lib/models";
-import ContactForm from "@/components/ContactForm";
+import TestRideSection from "@/components/sections/TestRideSection";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -132,7 +132,7 @@ export default async function ModelPage({
                 </div>
                 <div className="flex gap-4 flex-wrap">
                   <Link
-                    href="#book"
+                    href="#test-ride"
                     className="bg-accent-red text-white font-black px-8 py-4 rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(221,43,28,0.6)] transition-all duration-300 inline-flex items-center gap-2 text-sm uppercase tracking-wide"
                   >
                     Book Free Test Ride <ArrowRight size={16} />
@@ -317,66 +317,9 @@ export default async function ModelPage({
       </section>
 
       {/* ─────────────────────────────────────────
-          BOOK TEST RIDE (DARK SPLIT)
+          BOOK TEST RIDE
       ───────────────────────────────────────── */}
-      <section id="book" className="bg-[#0a0a0f] relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse 60% 80% at 0% 50%, ${model.accentColor}15, transparent 70%)` }}
-        />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch min-h-[650px]">
-            {/* Left */}
-            <div data-aos="fade-right" className="py-20 pr-0 lg:pr-16 flex flex-col justify-center">
-              <p className="eyebrow text-accent-red mb-4">Book Your Free Test Ride</p>
-              <h2 className="font-montserrat font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
-                Feel the {model.name.replace("RYDEEX ", "")}<br />
-                <span className="text-gradient-red">For Yourself.</span>
-              </h2>
-              <p className="text-gray-400 text-base mb-8 leading-relaxed">
-                Visit our Greater Noida showroom and take the {model.name} on a proper test ride — no fees, no pressure, no commitment.
-              </p>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8">
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="font-montserrat font-black text-3xl text-white">{model.price}</span>
-                  <span className="text-gray-500 text-sm">{model.priceNote}</span>
-                </div>
-                <p className="text-gray-400 text-sm">EMI available · Trade-in accepted · Finance on-site</p>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="tel:+919876543210"
-                  className="inline-flex items-center gap-2 border border-white/20 text-white/80 px-6 py-3 rounded-full hover:border-white/50 hover:text-white transition-all text-sm font-semibold"
-                >
-                  Call: +91 98765 43210
-                </a>
-                <a
-                  href="https://wa.me/919876543210"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] px-6 py-3 rounded-full hover:bg-[#25D366] hover:text-white transition-all text-sm font-semibold"
-                >
-                  WhatsApp Us
-                </a>
-              </div>
-            </div>
-
-            {/* Right — form */}
-            <div
-              data-aos="fade-left"
-              className="lg:my-10 rounded-3xl bg-white p-8 md:p-10 flex flex-col justify-center shadow-2xl"
-            >
-              <h3 className="font-montserrat font-black text-2xl text-gray-900 mb-1">
-                Book Test Ride
-              </h3>
-              <p className="text-gray-400 text-sm mb-8">
-                We&apos;ll confirm within 30 minutes.
-              </p>
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestRideSection />
 
       {/* ─────────────────────────────────────────
           OTHER MODELS
