@@ -68,10 +68,9 @@ export default function ModelsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div data-aos="fade-up" className="max-w-2xl mx-auto text-center mb-20">
-          <p className="eyebrow text-accent-red mb-3">Our Lineup</p>
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-white mb-4">
-            Six Models.<br />
-            <span className="text-gradient-red">One Revolution.</span>
+          <p className="eyebrow text-accent-red mb-3 mx-auto">Our Lineup</p>
+          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-white mb-4 whitespace-nowrap">
+            Six models. <span className="text-gradient-red">One revolution.</span>
           </h2>
           <p className="text-gray-400 text-lg">Choose the RYDEEX that matches your ride.</p>
         </div>

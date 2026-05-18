@@ -155,13 +155,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ══════════════════════════════════════
-   EYEBROW LABEL
+   EYEBROW LABEL — pill badge style
 ══════════════════════════════════════ */
-.eyebrow {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+@layer components {
+  .eyebrow {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem 0.3rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    background-color: transparent;
+    width: fit-content;
+  }
+
+  .eyebrow::before {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
 }
 
 /* ══════════════════════════════════════

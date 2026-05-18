@@ -27,9 +27,9 @@ export default function LocationSection() {
     <section id="location" className="py-28 bg-bg-light">
       <div className="container mx-auto px-4">
         <div data-aos="fade-up" className="text-center mb-16">
-          <p className="eyebrow text-accent-red mb-3">Find Us</p>
+          <p className="eyebrow text-accent-red mb-3 mx-auto">Find Us</p>
           <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900">
-            Visit Our Showroom
+            Visit our showroom
           </h2>
         </div>
 

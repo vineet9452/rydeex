@@ -14,10 +14,9 @@ export default function TestimonialsSection() {
     <section id="testimonials" className="py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div data-aos="fade-up" className="text-center mb-16">
-          <p className="eyebrow text-accent-red mb-3">Rider Stories</p>
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 mb-4">
-            10,000+ Riders.<br />
-            <span className="text-gradient-purple">One Verdict.</span>
+          <p className="eyebrow text-accent-red mb-3 mx-auto">Rider Stories</p>
+          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 mb-4 whitespace-nowrap">
+            10,000+ riders. <span className="text-gradient-purple">One verdict.</span>
           </h2>
           <p className="text-gray-500 text-lg">Real stories from real riders across Greater Noida and beyond.</p>
         </div>
