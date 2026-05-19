@@ -59,7 +59,7 @@ export default function FAQPage() {
         <div className="mt-16 text-center bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
           <h2 className="text-2xl font-bold font-montserrat text-primary mb-4">Still have questions?</h2>
           <p className="text-gray-600 mb-6">Our team is ready to help you with any other inquiries.</p>
-          <a href="/#test-ride" className="inline-block bg-accent-red text-white font-bold py-3 px-8 rounded-full hover:bg-primary hover:scale-105 transition-all duration-300">
+          <a href="/#test-ride" className="inline-block bg-accent-red text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-accent-red hover:shadow-[0_0_24px_rgba(220,38,38,0.4)] hover:scale-105 transition-all duration-300">
             Contact Support
           </a>
         </div>

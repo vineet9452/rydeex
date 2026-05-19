@@ -113,7 +113,7 @@ export default function Header() {
             <Link
               href="#test-ride"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full bg-accent-red text-white font-bold text-center py-3.5 px-8 rounded-full hover:shadow-[0_0_24px_rgba(220,38,38,0.5)] transition-all duration-300 flex items-center justify-center"
+              className="w-full bg-accent-red text-white font-bold text-center py-3.5 px-8 rounded-full hover:bg-white hover:text-accent-red hover:shadow-[0_0_24px_rgba(220,38,38,0.4)] transition-all duration-300 flex items-center justify-center"
             >
               Book Test Ride
             </Link>

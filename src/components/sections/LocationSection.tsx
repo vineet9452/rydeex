@@ -53,7 +53,7 @@ export default function LocationSection() {
 
             <Link
               href="#test-ride"
-              className="flex items-center justify-center gap-2 w-full bg-primary text-white font-bold py-4 rounded-2xl hover:bg-gray-900 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] transition-all duration-300 mt-2 cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full bg-accent-red text-white font-bold py-4 rounded-2xl hover:bg-white hover:text-accent-red hover:shadow-[0_0_24px_rgba(220,38,38,0.3)] transition-all duration-300 mt-2 cursor-pointer"
             >
               Book Your Visit <ArrowRight size={18} />
             </Link>

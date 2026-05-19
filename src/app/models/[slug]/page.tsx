@@ -133,7 +133,7 @@ export default async function ModelPage({
                 <div className="flex gap-4 flex-wrap">
                   <Link
                     href="#test-ride"
-                    className="bg-accent-red text-white font-black px-8 py-4 rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(221,43,28,0.6)] transition-all duration-300 inline-flex items-center gap-2 text-sm uppercase tracking-wide"
+                    className="bg-accent-red text-white font-black px-8 py-4 rounded-full hover:bg-white hover:text-accent-red hover:scale-105 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] transition-all duration-300 inline-flex items-center gap-2 text-sm uppercase tracking-wide"
                   >
                     Book Free Test Ride <ArrowRight size={16} />
                   </Link>
