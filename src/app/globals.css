@@ -30,7 +30,7 @@
 
 @layer base {
   :root {
-    --background: var(--color-bg-light);
+    --background: var(--color-bg-dark);
     --foreground: #111118;
   }
 }
