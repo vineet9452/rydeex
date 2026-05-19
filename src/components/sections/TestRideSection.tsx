@@ -7,7 +7,7 @@ export default function TestRideSection({ modelName }: { modelName?: string }) {
   return (
     <section id="test-ride" className="bg-gray-50 relative py-24 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-16 items-center justify-center max-w-[1200px] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center justify-center max-w-[1200px] mx-auto">
 
           {/* Left Content */}
           <div data-aos="fade-right" className="flex-1 w-full max-w-2xl">
@@ -16,7 +16,7 @@ export default function TestRideSection({ modelName }: { modelName?: string }) {
               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Free Test Ride · Limited Slots</span>
             </div>
 
-            <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 mb-6 leading-tight">
+            <h2 className="font-montserrat font-black text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-5 sm:mb-6 leading-tight">
               {displayName ? (
                 <>Feel the <span className="text-accent-red">{displayName}</span> yourself.</>
               ) : (
@@ -24,11 +24,11 @@ export default function TestRideSection({ modelName }: { modelName?: string }) {
               )}
             </h2>
             
-            <p className="text-gray-600 text-lg md:text-xl mb-12 leading-relaxed">
+            <p className="text-gray-600 text-base sm:text-lg md:text-xl mb-6 sm:mb-10 leading-relaxed">
               Visit our Greater Noida showroom. Take any RYDEEX model for a spin. Zero booking fees, zero commitment.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-10">
               {[
                 "Ride any model in our lineup",
                 "Expert guidance from our EV team",
@@ -42,7 +42,7 @@ export default function TestRideSection({ modelName }: { modelName?: string }) {
               ))}
             </div>
 
-            <div className="flex gap-8 flex-wrap pt-8 border-t border-gray-200">
+            <div className="flex gap-5 sm:gap-8 flex-wrap pt-5 sm:pt-8 border-t border-gray-200">
               {[
                 { icon: <Shield size={20} />, label: "3 Year Warranty" },
                 { icon: <Zap size={20} />, label: "Free Charging Setup" },

@@ -101,13 +101,13 @@ export default async function ModelPage({
           {/* Back link */}
           <Link
             href="/#models"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-12 text-sm font-semibold group"
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 sm:mb-12 text-sm font-semibold group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             Back to All Models
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[auto] lg:min-h-[80vh]">
             {/* Left — content */}
             <div>
               {/* Badges row */}
@@ -130,7 +130,7 @@ export default async function ModelPage({
               {/* Name & tagline */}
               <h1
                 data-aos="fade-right"
-                className="font-montserrat font-black text-5xl md:text-6xl lg:text-7xl text-white mb-3 leading-[0.92] uppercase tracking-tight"
+                className="font-montserrat font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-3 leading-[0.92] uppercase tracking-tight"
               >
                 {model.name.replace("RYDEEX ", "")}
               </h1>
@@ -161,7 +161,7 @@ export default async function ModelPage({
               <p
                 data-aos="fade-right"
                 data-aos-delay="140"
-                className="text-gray-400 text-base leading-relaxed mb-10 max-w-lg"
+                className="text-gray-400 text-base leading-relaxed mb-6 sm:mb-10 max-w-lg"
               >
                 {model.description}
               </p>
@@ -170,7 +170,7 @@ export default async function ModelPage({
               <div
                 data-aos="fade-up"
                 data-aos-delay="200"
-                className="grid grid-cols-4 gap-3 mb-10"
+                className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-6 sm:mb-10"
               >
                 {model.quickSpecs.map((spec) => (
                   <div
@@ -200,16 +200,16 @@ export default async function ModelPage({
                 </p>
 
                 {/* CTA buttons */}
-                <div className="flex gap-3 flex-wrap mb-8">
+                <div className="flex gap-2 sm:gap-3 flex-wrap mb-6 sm:mb-8">
                   <Link
                     href="#test-ride"
-                    className="bg-accent-red text-white font-black px-7 py-4 rounded-full hover:bg-white hover:text-accent-red hover:scale-105 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] transition-all duration-300 inline-flex items-center gap-2 text-sm uppercase tracking-wide"
+                    className="bg-accent-red text-white font-black px-5 sm:px-7 py-3 sm:py-4 rounded-full hover:bg-white hover:text-accent-red hover:scale-105 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] transition-all duration-300 inline-flex items-center gap-2 text-sm uppercase tracking-wide"
                   >
-                    Book Free Test Ride <ArrowRight size={16} />
+                    Book Free Test Ride <ArrowRight size={15} />
                   </Link>
                   <Link
                     href="#specs"
-                    className="border border-white/20 text-white/80 font-semibold px-7 py-4 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 text-sm"
+                    className="border border-white/20 text-white/80 font-semibold px-5 sm:px-7 py-3 sm:py-4 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 text-sm"
                   >
                     View Full Specs
                   </Link>
@@ -218,7 +218,7 @@ export default async function ModelPage({
                     href={`https://wa.me/919876543210?text=${waMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 border border-[#25D366]/40 text-[#25D366] font-semibold px-5 py-4 rounded-full hover:bg-[#25D366]/10 transition-all duration-300 text-sm"
+                    className="flex items-center gap-2 border border-[#25D366]/40 text-[#25D366] font-semibold px-4 sm:px-5 py-3 sm:py-4 rounded-full hover:bg-[#25D366]/10 transition-all duration-300 text-sm"
                   >
                     <MessageCircle size={16} />
                     WhatsApp
@@ -226,7 +226,7 @@ export default async function ModelPage({
                 </div>
 
                 {/* Trust strip */}
-                <div className="flex flex-wrap gap-x-5 gap-y-2 pt-5 border-t border-white/8">
+                <div className="flex flex-wrap gap-x-3 sm:gap-x-5 gap-y-2 pt-4 sm:pt-5 border-t border-white/8">
                   {[
                     { icon: <BadgeCheck size={13} />, label: "FAME-II Eligible" },
                     { icon: <Shield size={13} />, label: "BIS Certified" },
@@ -276,7 +276,7 @@ export default async function ModelPage({
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {model.features.map((feat, idx) => (
               <div
                 key={idx}
@@ -331,7 +331,7 @@ export default async function ModelPage({
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
             {model.specs.map((group, gIdx) => (
               <div
                 key={gIdx}

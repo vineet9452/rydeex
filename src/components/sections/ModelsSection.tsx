@@ -69,13 +69,13 @@ export default function ModelsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div data-aos="fade-up" className="max-w-2xl mx-auto text-center mb-20">
           <p className="eyebrow text-accent-red mb-3 mx-auto">Our Lineup</p>
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-white mb-4 whitespace-nowrap">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl md:text-5xl text-white mb-4">
             Six models. <span className="text-gradient-red">One revolution.</span>
           </h2>
           <p className="text-gray-400 text-lg">Choose the RYDEEX that matches your ride.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 max-w-5xl mx-auto">
           {models.map((model, idx) => (
             <div
               key={idx}

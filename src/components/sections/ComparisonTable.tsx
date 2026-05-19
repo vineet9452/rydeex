@@ -95,83 +95,87 @@ export default function ComparisonTable({ model }: Props) {
           </p>
         </div>
 
-        {/* Table */}
+        {/* Table — horizontal scroll on small screens */}
         <div
           className="max-w-3xl mx-auto rounded-3xl overflow-hidden border border-gray-200 shadow-sm"
           data-aos="fade-up"
           data-aos-delay="60"
         >
-          {/* Column headers */}
-          <div className="grid grid-cols-[1fr_1fr_1fr] bg-gray-900">
-            <div className="px-5 py-4 border-r border-white/10">
-              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
-                Category
-              </span>
-            </div>
-            <div className="px-5 py-4 border-r border-white/10 text-center">
-              <span
-                className="text-xs font-black uppercase tracking-wider font-montserrat"
-                style={{ color: model.accentColor }}
-              >
-                {model.name}
-              </span>
-            </div>
-            <div className="px-5 py-4 text-center">
-              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
-                Petrol 100cc
-              </span>
-            </div>
-          </div>
-
-          {/* Rows */}
-          {rows.map((row, idx) => (
-            <div
-              key={idx}
-              className={`grid grid-cols-[1fr_1fr_1fr] border-t border-gray-100 ${
-                idx % 2 === 0 ? "bg-white" : "bg-gray-50/60"
-              }`}
-            >
-              {/* Label */}
-              <div className="px-5 py-4 border-r border-gray-100">
-                <span className="text-gray-600 text-sm font-medium">{row.label}</span>
-              </div>
-
-              {/* EV value */}
-              <div className="px-5 py-4 border-r border-gray-100 flex items-center justify-center gap-2">
-                {row.evWins && (
+          <div className="overflow-x-auto">
+            <div style={{ minWidth: "480px" }}>
+              {/* Column headers */}
+              <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-gray-900">
+                <div className="px-4 py-3 sm:px-5 sm:py-4 border-r border-white/10">
+                  <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
+                    Category
+                  </span>
+                </div>
+                <div className="px-4 py-3 sm:px-5 sm:py-4 border-r border-white/10 text-center">
                   <span
-                    className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${model.accentColor}20` }}
+                    className="text-xs font-black uppercase tracking-wider font-montserrat"
+                    style={{ color: model.accentColor }}
                   >
-                    <Check size={10} style={{ color: model.accentColor }} strokeWidth={3} />
+                    {model.name.replace("RYDEEX ", "")}
                   </span>
-                )}
-                <span
-                  className="font-bold text-sm text-center"
-                  style={row.evWins ? { color: model.accentColor } : { color: "#111827" }}
-                >
-                  {row.ev}
-                </span>
+                </div>
+                <div className="px-4 py-3 sm:px-5 sm:py-4 text-center">
+                  <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
+                    Petrol 100cc
+                  </span>
+                </div>
               </div>
 
-              {/* Petrol value */}
-              <div className="px-5 py-4 flex items-center justify-center gap-2">
-                {row.evWins && (
-                  <span className="w-4 h-4 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                    <Minus size={10} className="text-gray-400" strokeWidth={3} />
-                  </span>
-                )}
-                <span className="text-gray-500 text-sm text-center">{row.petrol}</span>
+              {/* Rows */}
+              {rows.map((row, idx) => (
+                <div
+                  key={idx}
+                  className={`grid grid-cols-[1.2fr_1fr_1fr] border-t border-gray-100 ${
+                    idx % 2 === 0 ? "bg-white" : "bg-gray-50/60"
+                  }`}
+                >
+                  {/* Label */}
+                  <div className="px-4 py-3 sm:px-5 sm:py-4 border-r border-gray-100">
+                    <span className="text-gray-600 text-xs sm:text-sm font-medium">{row.label}</span>
+                  </div>
+
+                  {/* EV value */}
+                  <div className="px-3 py-3 sm:px-5 sm:py-4 border-r border-gray-100 flex items-center justify-center gap-1.5">
+                    {row.evWins && (
+                      <span
+                        className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ background: `${model.accentColor}20` }}
+                      >
+                        <Check size={10} style={{ color: model.accentColor }} strokeWidth={3} />
+                      </span>
+                    )}
+                    <span
+                      className="font-bold text-xs sm:text-sm text-center"
+                      style={row.evWins ? { color: model.accentColor } : { color: "#111827" }}
+                    >
+                      {row.ev}
+                    </span>
+                  </div>
+
+                  {/* Petrol value */}
+                  <div className="px-3 py-3 sm:px-5 sm:py-4 flex items-center justify-center gap-1.5">
+                    {row.evWins && (
+                      <span className="w-4 h-4 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Minus size={10} className="text-gray-400" strokeWidth={3} />
+                      </span>
+                    )}
+                    <span className="text-gray-500 text-xs sm:text-sm text-center">{row.petrol}</span>
+                  </div>
+                </div>
+              ))}
+
+              {/* Footer note */}
+              <div className="bg-gray-900 px-5 py-3 text-center">
+                <p className="text-gray-500 text-[10px]">
+                  * Running cost estimates based on 40km/day, 26 days/month. Petrol @ ₹140/L, 40 kmpl.
+                  Electricity @ ₹8/unit.
+                </p>
               </div>
             </div>
-          ))}
-
-          {/* Footer note */}
-          <div className="bg-gray-900 px-5 py-3 text-center">
-            <p className="text-gray-500 text-[10px]">
-              * Running cost estimates based on 40km/day, 26 days/month. Petrol @ ₹140/L, 40 kmpl.
-              Electricity @ ₹8/unit.
-            </p>
           </div>
         </div>
       </div>

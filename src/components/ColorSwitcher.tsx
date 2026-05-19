@@ -31,14 +31,11 @@ export default function ColorSwitcher({ colors, modelName, accentColor }: ColorS
       <div
         data-aos="fade-left"
         data-aos-delay="100"
-        className="relative flex items-center justify-center h-[400px] md:h-[550px]"
+        className="relative h-[400px] md:h-[550px] rounded-3xl overflow-hidden border-2 border-white/10"
+        style={{
+          boxShadow: `0 0 50px ${colors[selectedIdx]?.hex || accentColor}20, 0 8px 32px rgba(0,0,0,0.4)`,
+        }}
       >
-        {/* Glow behind image */}
-        <div
-          className="absolute inset-0 rounded-full blur-3xl opacity-20 transition-colors duration-700"
-          style={{ background: colors[selectedIdx]?.hex || accentColor }}
-        />
-
         {/* Scooter images — all preloaded, only one visible */}
         {colors.map((color, idx) => (
           <div
@@ -53,7 +50,7 @@ export default function ColorSwitcher({ colors, modelName, accentColor }: ColorS
               src={color.image}
               alt={`${modelName} — ${color.name}`}
               fill
-              className="object-contain animate-float drop-shadow-2xl"
+              className="object-cover"
               priority={idx === 0}
               sizes="(max-width: 768px) 100vw, 50vw"
             />

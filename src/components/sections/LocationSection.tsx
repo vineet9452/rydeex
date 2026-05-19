@@ -62,7 +62,7 @@ export default function LocationSection() {
           {/* Map */}
           <div
             data-aos="fade-left"
-            className="min-h-[380px] rounded-3xl overflow-hidden shadow-xl border-2 border-accent-red"
+            className="min-h-[280px] sm:min-h-[380px] rounded-3xl overflow-hidden shadow-xl border-2 border-accent-red"
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112224.23270417631!2d77.42621741549444!3d28.472718817757918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc1f92e423587%3A0xe21f5ebef7052994!2sKnowledge%20Park%20III%2C%20Greater%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1703080000000!5m2!1sen!2sin"

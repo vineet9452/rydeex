@@ -55,7 +55,7 @@ export default function FeaturesSection() {
         {/* Header */}
         <div data-aos="fade-up" className="max-w-2xl mx-auto text-center mb-20">
           <p className="eyebrow text-accent-red mb-3 mx-auto">Why Go Electric</p>
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 mb-4 whitespace-nowrap">
+          <h2 className="font-montserrat font-black text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4">
             Built different. <span className="text-gradient-red">Engineered smarter.</span>
           </h2>
           <p className="text-gray-500 text-lg">

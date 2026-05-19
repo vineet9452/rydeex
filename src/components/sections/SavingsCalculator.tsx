@@ -76,35 +76,35 @@ export default function SavingsCalculator({ priceStr, accentColor }: Props) {
           </div>
 
           {/* Three cost cards */}
-          <div className="grid grid-cols-3 gap-4 mb-5">
-            <div className="bg-white/[0.04] border border-white/8 rounded-2xl p-5 text-center">
-              <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-2">Petrol Scooter</p>
-              <p className="text-white font-black text-xl font-montserrat">₹{fmt(petrolMonthly)}</p>
-              <p className="text-gray-500 text-[10px] mt-1">per month</p>
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-5">
+            <div className="bg-white/[0.04] border border-white/8 rounded-xl sm:rounded-2xl p-3 sm:p-5 text-center">
+              <p className="text-gray-500 text-[9px] sm:text-[10px] uppercase tracking-wider mb-1 sm:mb-2">Petrol Scooter</p>
+              <p className="text-white font-black text-base sm:text-xl font-montserrat">₹{fmt(petrolMonthly)}</p>
+              <p className="text-gray-500 text-[9px] sm:text-[10px] mt-1">per month</p>
             </div>
 
             {/* Savings highlight */}
             <div
-              className="rounded-2xl p-5 text-center relative overflow-hidden"
+              className="rounded-xl sm:rounded-2xl p-3 sm:p-5 text-center relative overflow-hidden"
               style={{
                 background: `${accentColor}1a`,
                 border: `1px solid ${accentColor}44`,
               }}
             >
-              <p className="text-gray-400 text-[10px] uppercase tracking-wider mb-2">You Save</p>
+              <p className="text-gray-400 text-[9px] sm:text-[10px] uppercase tracking-wider mb-1 sm:mb-2">You Save</p>
               <p
-                className="font-black text-xl font-montserrat"
+                className="font-black text-base sm:text-xl font-montserrat"
                 style={{ color: accentColor }}
               >
                 ₹{fmt(monthlySavings)}
               </p>
-              <p className="text-gray-400 text-[10px] mt-1">per month</p>
+              <p className="text-gray-400 text-[9px] sm:text-[10px] mt-1">per month</p>
             </div>
 
-            <div className="bg-white/[0.04] border border-white/8 rounded-2xl p-5 text-center">
-              <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-2">X1 Pro Cost</p>
-              <p className="text-white font-black text-xl font-montserrat">₹{fmt(evMonthly)}</p>
-              <p className="text-gray-500 text-[10px] mt-1">per month</p>
+            <div className="bg-white/[0.04] border border-white/8 rounded-xl sm:rounded-2xl p-3 sm:p-5 text-center">
+              <p className="text-gray-500 text-[9px] sm:text-[10px] uppercase tracking-wider mb-1 sm:mb-2">EV Cost</p>
+              <p className="text-white font-black text-base sm:text-xl font-montserrat">₹{fmt(evMonthly)}</p>
+              <p className="text-gray-500 text-[9px] sm:text-[10px] mt-1">per month</p>
             </div>
           </div>
 

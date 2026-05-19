@@ -24,10 +24,10 @@ export default function StatsSection() {
               className="text-center"
             >
               <div className="flex items-end justify-center gap-1 mb-2">
-                <span className="font-montserrat font-black text-5xl md:text-6xl text-white leading-none">{s.value}</span>
-                <span className="font-montserrat font-black text-2xl text-accent-yellow mb-1">{s.unit}</span>
+                <span className="font-montserrat font-black text-4xl sm:text-5xl md:text-6xl text-white leading-none">{s.value}</span>
+                <span className="font-montserrat font-black text-xl sm:text-2xl text-accent-yellow mb-1">{s.unit}</span>
               </div>
-              <p className="text-white/60 font-semibold text-sm tracking-wide uppercase">{s.label}</p>
+              <p className="text-white/60 font-semibold text-xs sm:text-sm tracking-wide uppercase">{s.label}</p>
             </div>
           ))}
         </div>

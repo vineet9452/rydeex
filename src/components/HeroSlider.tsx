@@ -95,7 +95,7 @@ export default function HeroSlider() {
   const slide = slides[current];
 
   return (
-    <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden bg-[#080810]">
+    <section className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-[#080810]">
       {/* ── BACKGROUND IMAGES (CROSS-FADE) ── */}
       {slides.map((s, i) => (
         <div
@@ -107,24 +107,25 @@ export default function HeroSlider() {
             src={s.image}
             alt={s.title}
             fill
-            className="object-cover object-center"
+            className="object-cover object-center sm:object-center"
             priority={i === 0}
+            sizes="100vw"
           />
         </div>
       ))}
 
       {/* ── GRADIENT OVERLAYS ── */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#080810] via-[#080810]/40 to-transparent" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080810]/80 via-[#080810]/30 to-transparent" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#080810] via-[#080810]/60 to-[#080810]/20 sm:via-[#080810]/40 sm:to-transparent" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080810]/90 via-[#080810]/50 to-transparent sm:from-[#080810]/80 sm:via-[#080810]/30" />
 
       {/* ── ANIMATED ACCENT GLOW ── */}
       <div
-        className={`absolute bottom-0 left-0 w-[600px] h-[400px] rounded-full blur-[150px] z-[1] transition-all duration-[800ms] bg-gradient-to-br ${slide.glowFrom} ${slide.glowTo}`}
+        className={`absolute bottom-0 left-0 w-[280px] sm:w-[600px] h-[200px] sm:h-[400px] rounded-full blur-[80px] sm:blur-[150px] z-[1] transition-all duration-[800ms] bg-gradient-to-br ${slide.glowFrom} ${slide.glowTo}`}
       />
 
       {/* ── CONTENT ── */}
-      <div className="container relative z-10 mx-auto px-4 pt-20 pb-28">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
+      <div className="container relative z-10 mx-auto px-4 pt-20 pb-24 sm:pt-20 sm:pb-28">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 lg:gap-10">
 
           {/* ── LEFT ── */}
           <div className="text-left w-full lg:max-w-[560px]">
@@ -132,11 +133,11 @@ export default function HeroSlider() {
             {/* Model Badge */}
             <div
               key={`badge-${current}`}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 border backdrop-blur-md animate-heroFadeUp"
+              className="inline-flex items-center gap-2 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-4 border backdrop-blur-md animate-heroFadeUp"
               style={{ borderColor: `${slide.accent}55`, backgroundColor: `${slide.accent}18` }}
             >
-              <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: slide.accent }} />
-              <span className="text-xs font-bold tracking-[0.15em] uppercase text-white/90">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: slide.accent }} />
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.15em] uppercase text-white/90">
                 {slide.title}
               </span>
             </div>
@@ -144,7 +145,7 @@ export default function HeroSlider() {
             {/* Headline */}
             <h1
               key={`title-${current}`}
-              className="font-montserrat font-black text-5xl md:text-6xl lg:text-[5.5rem] text-white mb-3 uppercase tracking-tight leading-[0.92] animate-heroFadeUp"
+              className="font-montserrat font-black text-[2.4rem] leading-[0.9] sm:text-5xl md:text-6xl lg:text-[5.5rem] text-white mb-2 sm:mb-3 uppercase tracking-tight sm:leading-[0.92] animate-heroFadeUp"
             >
               {slide.subtitle.split(" ").map((word, wi, arr) => (
                 <span key={wi}>
@@ -158,23 +159,23 @@ export default function HeroSlider() {
             {/* Tagline */}
             <p
               key={`tagline-${current}`}
-              className="text-white/70 text-base font-semibold max-w-lg mb-3 leading-snug animate-heroFadeUp animation-delay-100"
+              className="text-white/70 text-sm sm:text-base font-semibold max-w-lg mb-2 sm:mb-3 leading-snug animate-heroFadeUp animation-delay-100"
             >
               {slide.tagline}
             </p>
 
-            {/* Description */}
+            {/* Description — hidden on xs, visible sm+ */}
             <p
               key={`desc-${current}`}
-              className="text-gray-400 text-sm max-w-md mb-6 leading-relaxed animate-heroFadeUp animation-delay-200"
+              className="hidden sm:block text-gray-400 text-sm max-w-md mb-5 sm:mb-6 leading-relaxed animate-heroFadeUp animation-delay-200"
             >
               {slide.desc}
             </p>
 
-            {/* Feature bullets */}
+            {/* Feature bullets — hidden on xs */}
             <ul
               key={`features-${current}`}
-              className="flex flex-col gap-2 mb-8 animate-heroFadeUp animation-delay-300"
+              className="hidden sm:flex flex-col gap-2 mb-6 sm:mb-8 animate-heroFadeUp animation-delay-300"
             >
               {slide.features.map((feat) => (
                 <li key={feat} className="flex items-center gap-2.5 text-sm text-white/75 font-medium">
@@ -188,28 +189,28 @@ export default function HeroSlider() {
             </ul>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mb-8 animate-heroFadeUp animation-delay-300">
+            <div className="flex flex-wrap gap-3 sm:gap-4 mb-4 sm:mb-8 animate-heroFadeUp animation-delay-300">
               <Link
                 href="#test-ride"
-                className="group relative overflow-hidden text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-[1.03] cursor-pointer"
+                className="group relative overflow-hidden text-white px-5 py-3 sm:px-8 sm:py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-[1.03] cursor-pointer"
                 style={{ backgroundColor: slide.accent }}
               >
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative z-10 group-hover:text-[#080810] transition-colors duration-300 flex items-center gap-2">
                   Book Test Ride
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
               <Link
                 href="#models"
-                className="backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer"
+                className="backdrop-blur-md bg-white/5 border border-white/20 text-white px-5 py-3 sm:px-8 sm:py-3.5 rounded-full font-bold text-sm tracking-wide hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer"
               >
-                Explore All Models
+                Explore Models
               </Link>
             </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2 animate-heroFadeUp animation-delay-300">
+            {/* Trust badges — hidden on xs */}
+            <div className="hidden sm:flex flex-wrap gap-x-5 gap-y-2 animate-heroFadeUp animation-delay-300">
               {["3 Year Warranty", "Free Test Ride", "EMI Available", "Made in India"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5 text-[11px] font-semibold text-white/40 uppercase tracking-wider">
                   <span className="w-1 h-1 rounded-full bg-white/30" />
@@ -220,14 +221,14 @@ export default function HeroSlider() {
           </div>
 
           {/* ── RIGHT – Specs + Nav ── */}
-          <div className="flex flex-col items-end gap-6 w-full lg:w-auto lg:self-end lg:mb-4">
+          <div className="flex flex-col items-stretch sm:items-end gap-4 sm:gap-6 w-full lg:w-auto lg:self-end lg:mb-4">
             {/* Specs */}
             <div
               key={`specs-${current}`}
-              className="grid grid-cols-3 gap-5 md:gap-8 p-5 md:p-6 rounded-3xl border backdrop-blur-xl shadow-2xl w-full lg:w-auto animate-heroFadeUp"
+              className="grid grid-cols-3 gap-3 sm:gap-5 md:gap-8 p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl border backdrop-blur-xl shadow-2xl w-full lg:w-auto animate-heroFadeUp"
               style={{
                 borderColor: `${slide.accent}25`,
-                backgroundColor: "rgba(0,0,0,0.45)",
+                backgroundColor: "rgba(0,0,0,0.55)",
               }}
             >
               {[
@@ -237,20 +238,20 @@ export default function HeroSlider() {
               ].map((s, i) => (
                 <div key={i} className="text-center relative">
                   {i !== 0 && (
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-8 bg-white/15 hidden md:block" />
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-6 sm:h-8 bg-white/15" />
                   )}
-                  <div className="flex items-baseline justify-center gap-1">
-                    <p className="font-montserrat font-black text-2xl md:text-3xl text-white">
+                  <div className="flex items-baseline justify-center gap-0.5 sm:gap-1">
+                    <p className="font-montserrat font-black text-lg sm:text-2xl md:text-3xl text-white">
                       {s.v}
                     </p>
                     <span
-                      className="font-bold text-xs"
+                      className="font-bold text-[10px] sm:text-xs"
                       style={{ color: slide.accent }}
                     >
                       {s.u}
                     </span>
                   </div>
-                  <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mt-1">
+                  <p className="text-[9px] sm:text-[10px] text-gray-400 font-semibold uppercase tracking-wider mt-0.5 sm:mt-1">
                     {s.l}
                   </p>
                 </div>
@@ -258,14 +259,13 @@ export default function HeroSlider() {
             </div>
 
             {/* Navigation Controls */}
-            <div className="flex items-center gap-4">
-              {/* Prev / Next */}
+            <div className="flex items-center justify-center sm:justify-end gap-3 sm:gap-4">
               <button
                 onClick={prev}
                 className="p-2 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-white/50 transition-all backdrop-blur-md bg-white/5"
                 aria-label="Previous"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={18} />
               </button>
 
               {/* Dot indicators */}
@@ -277,7 +277,7 @@ export default function HeroSlider() {
                     aria-label={`Go to slide ${i + 1}`}
                     className="relative h-2 rounded-full transition-all duration-500 overflow-hidden"
                     style={{
-                      width: i === current ? "32px" : "8px",
+                      width: i === current ? "28px" : "8px",
                       backgroundColor:
                         i === current ? slide.accent : "rgba(255,255,255,0.25)",
                     }}
@@ -297,7 +297,7 @@ export default function HeroSlider() {
                 className="p-2 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-white/50 transition-all backdrop-blur-md bg-white/5"
                 aria-label="Next"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={18} />
               </button>
             </div>
           </div>
@@ -305,11 +305,11 @@ export default function HeroSlider() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 opacity-40 hover:opacity-100 transition-opacity cursor-pointer">
         <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-white">
           Explore
         </span>
-        <div className="w-px h-6 bg-white animate-pulse" />
+        <div className="w-px h-5 bg-white animate-pulse" />
       </div>
     </section>
   );
