@@ -98,7 +98,7 @@ export default function ModelsSection() {
                   src={model.image}
                   alt={model.name}
                   fill
-                  className="object-contain p-1 group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f]/70 to-transparent pointer-events-none" />
               </div>
