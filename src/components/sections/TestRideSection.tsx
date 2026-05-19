@@ -1,7 +1,9 @@
 import { CheckCircle2, Shield, Zap, Award } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
-export default function TestRideSection() {
+export default function TestRideSection({ modelName }: { modelName?: string }) {
+  const displayName = modelName ? modelName.replace("RYDEEX ", "") : "";
+
   return (
     <section id="test-ride" className="bg-gray-50 relative py-24 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
@@ -11,11 +13,15 @@ export default function TestRideSection() {
           <div data-aos="fade-right" className="flex-1 w-full max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-red/20 bg-accent-red/10 mb-8">
               <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse" />
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Free Test Ride</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Free Test Ride · Limited Slots</span>
             </div>
-            
+
             <h2 className="font-montserrat font-black text-4xl md:text-5xl text-gray-900 mb-6 leading-tight">
-              Ready to feel <span className="text-accent-red">the difference?</span>
+              {displayName ? (
+                <>Feel the <span className="text-accent-red">{displayName}</span> yourself.</>
+              ) : (
+                <>Ready to feel <span className="text-accent-red">the difference?</span></>
+              )}
             </h2>
             
             <p className="text-gray-600 text-lg md:text-xl mb-12 leading-relaxed">
@@ -61,7 +67,7 @@ export default function TestRideSection() {
               {/* Reference-style full width red line */}
               <div className="w-full h-[2px] bg-accent-red mb-6" />
               
-              <ContactForm />
+              <ContactForm defaultModel={modelName ? modelName.replace("RYDEEX ", "") : ""} />
             </div>
           </div>
         </div>

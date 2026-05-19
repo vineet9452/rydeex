@@ -40,6 +40,15 @@ export interface EVModel {
   colors: ModelColor[];
 
   whyThis: string[];
+
+  testimonials?: {
+    name: string;
+    city: string;
+    rating: number;
+    quote: string;
+  }[];
+
+  faq?: { q: string; a: string }[];
 }
 
 export const models: EVModel[] = [
@@ -149,6 +158,46 @@ export const models: EVModel[] = [
       "Lowest running cost in Greater Noida",
       "Most popular model — 1,200+ units sold",
       "3-year comprehensive warranty included"
+    ],
+
+    testimonials: [
+      {
+        name: "Arjun Mehta",
+        city: "Greater Noida Sector 4",
+        rating: 5,
+        quote: "Been riding the X1 Pro for 6 months now. The 120 km range is absolutely real in city conditions. Best decision I made switching from petrol — my fuel bill went from ₹3,000 to near zero."
+      },
+      {
+        name: "Priya Sharma",
+        city: "Noida Sector 62",
+        rating: 5,
+        quote: "The TFT display is stunning and switching between Eco, City and Sport modes genuinely changes how the scooter feels. Super impressed with the build quality for this price point."
+      },
+      {
+        name: "Rohit Verma",
+        city: "Greater Noida West",
+        rating: 5,
+        quote: "Plug it into my home socket every night and wake up to a full battery. No special charger needed. I tell everyone at my office — this is the smartest purchase I made this year."
+      }
+    ],
+
+    faq: [
+      {
+        q: "What is the real-world range in Greater Noida traffic?",
+        a: "In mixed city conditions using Eco and City modes, most X1 Pro owners report 95–110 km per charge. The certified 120 km figure is achievable in Eco mode on relatively clear roads. Even at 95 km, it comfortably covers a full workday commute and evening errands."
+      },
+      {
+        q: "Can I charge using my home socket?",
+        a: "Yes — the X1 Pro uses a standard 5A household socket. No special wallbox or dedicated EV charger required. Just plug the included cable into any home or office power point. A full charge from empty takes approximately 4 hours."
+      },
+      {
+        q: "Is CBS braking sufficient for highway riding?",
+        a: "CBS (Combined Braking System) is engineered for urban and semi-urban conditions. For occasional highway stretches up to 80 km/h it performs excellently. If you regularly ride at highway speeds above 80 km/h, we recommend the RS MAX which features dual hydraulic disc brakes."
+      },
+      {
+        q: "What exactly does the 3-year warranty cover?",
+        a: "The warranty covers the battery pack, motor, controller, and all electronic components for 3 years from date of purchase. Mechanical wear items such as tyres, brake pads, and suspension components are consumables and not covered — this is standard practice across the EV industry."
+      }
     ]
   },
 

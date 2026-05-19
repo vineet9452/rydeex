@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
-export default function ContactForm() {
+export default function ContactForm({ defaultModel = "" }: { defaultModel?: string }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -102,6 +102,7 @@ export default function ContactForm() {
         </label>
         <select
           id="model" name="model"
+          defaultValue={defaultModel}
           className={`${inputBaseClasses} appearance-none cursor-pointer`}
         >
           <option value="" className="bg-white text-gray-500">Select a model...</option>

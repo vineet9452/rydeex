@@ -1,9 +1,22 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  ArrowLeft,
+  CheckCircle2,
+  ArrowRight,
+  Shield,
+  BadgeCheck,
+  Zap,
+  Star,
+  MessageCircle,
+} from "lucide-react";
 import { models, getModelBySlug } from "@/lib/models";
 import TestRideSection from "@/components/sections/TestRideSection";
+import StickyModelCTA from "@/components/StickyModelCTA";
+import ColorPickerClient from "@/components/ColorPickerClient";
+import SavingsCalculator from "@/components/sections/SavingsCalculator";
+import FaqAccordion from "@/components/FaqAccordion";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -35,26 +48,33 @@ export default async function ModelPage({
   if (!model) notFound();
 
   const otherModels = models.filter((m) => m.slug !== slug);
+  const waMessage = encodeURIComponent(
+    `Hi! I am interested in the ${model.name}. Please share more details.`
+  );
 
   return (
     <>
       {/* ─────────────────────────────────────────
           HERO — DARK FULL BLEED
       ───────────────────────────────────────── */}
-      <section className={`relative min-h-screen flex items-center bg-[#0a0a0f] overflow-hidden`}>
+      <section
+        id="hero-section"
+        className="relative min-h-screen flex items-center bg-[#0a0a0f] overflow-hidden"
+      >
         {/* Dynamic accent glow */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse 80% 60% at 70% 50%, ${model.accentColor}22 0%, transparent 70%)`
+            background: `radial-gradient(ellipse 80% 60% at 70% 50%, ${model.accentColor}22 0%, transparent 70%)`,
           }}
         />
-        {/* Grid */}
+        {/* Grid overlay */}
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px)",
-            backgroundSize: "40px 40px"
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px)",
+            backgroundSize: "40px 40px",
           }}
         />
 
@@ -71,7 +91,7 @@ export default async function ModelPage({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             {/* Left — content */}
             <div>
-              {/* Badges */}
+              {/* Badges row */}
               <div className="flex gap-3 mb-6 flex-wrap">
                 {model.tag && (
                   <span className={`${model.tagColor} text-xs font-bold px-3 py-1.5 rounded-full`}>
@@ -80,6 +100,11 @@ export default async function ModelPage({
                 )}
                 <span className="bg-white/10 text-white/60 border border-white/10 text-xs font-semibold px-3 py-1.5 rounded-full">
                   {model.highlight}
+                </span>
+                {/* Urgency badge */}
+                <span className="flex items-center gap-1.5 bg-red-500/15 text-red-400 border border-red-500/25 text-xs font-bold px-3 py-1.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
+                  Limited Stock
                 </span>
               </div>
 
@@ -93,11 +118,27 @@ export default async function ModelPage({
               <p
                 data-aos="fade-right"
                 data-aos-delay="80"
-                className="font-montserrat font-bold text-xl md:text-2xl mb-6"
+                className="font-montserrat font-bold text-xl md:text-2xl mb-4"
                 style={{ color: model.accentColor }}
               >
                 {model.tagline}
               </p>
+
+              {/* Social proof strip */}
+              <div
+                data-aos="fade-right"
+                data-aos-delay="110"
+                className="flex items-center gap-2 mb-5"
+              >
+                <div className="flex">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} size={13} className="text-amber-400 fill-amber-400" />
+                  ))}
+                </div>
+                <span className="text-white/80 font-semibold text-sm">4.8 / 5</span>
+                <span className="text-gray-500 text-sm">· 1,200+ owners in Greater Noida</span>
+              </div>
+
               <p
                 data-aos="fade-right"
                 data-aos-delay="140"
@@ -118,31 +159,68 @@ export default async function ModelPage({
                     className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center"
                   >
                     <span className="text-2xl block mb-1">{spec.icon}</span>
-                    <p className="text-white font-black text-sm font-montserrat leading-tight">{spec.value}</p>
+                    <p className="text-white font-black text-sm font-montserrat leading-tight">
+                      {spec.value}
+                    </p>
                     <p className="text-gray-500 text-xs mt-0.5">{spec.label}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Price + CTAs */}
+              {/* Price + EMI + CTAs */}
               <div data-aos="fade-up" data-aos-delay="260">
-                <div className="flex items-baseline gap-2 mb-6">
-                  <span className="font-montserrat font-black text-4xl text-white">{model.price}</span>
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="font-montserrat font-black text-4xl text-white">
+                    {model.price}
+                  </span>
                   <span className="text-gray-500 text-sm">{model.priceNote}</span>
                 </div>
-                <div className="flex gap-4 flex-wrap">
+                {/* EMI hook */}
+                <p className="text-emerald-400 text-xs font-semibold mb-6">
+                  or ₹2,799/mo · 0% EMI available for 36 months
+                </p>
+
+                {/* CTA buttons */}
+                <div className="flex gap-3 flex-wrap mb-8">
                   <Link
                     href="#test-ride"
-                    className="bg-accent-red text-white font-black px-8 py-4 rounded-full hover:bg-white hover:text-accent-red hover:scale-105 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] transition-all duration-300 inline-flex items-center gap-2 text-sm uppercase tracking-wide"
+                    className="bg-accent-red text-white font-black px-7 py-4 rounded-full hover:bg-white hover:text-accent-red hover:scale-105 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] transition-all duration-300 inline-flex items-center gap-2 text-sm uppercase tracking-wide"
                   >
                     Book Free Test Ride <ArrowRight size={16} />
                   </Link>
                   <Link
                     href="#specs"
-                    className="border border-white/20 text-white/80 font-semibold px-8 py-4 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 text-sm"
+                    className="border border-white/20 text-white/80 font-semibold px-7 py-4 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 text-sm"
                   >
                     View Full Specs
                   </Link>
+                  {/* WhatsApp CTA */}
+                  <a
+                    href={`https://wa.me/919876543210?text=${waMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 border border-[#25D366]/40 text-[#25D366] font-semibold px-5 py-4 rounded-full hover:bg-[#25D366]/10 transition-all duration-300 text-sm"
+                  >
+                    <MessageCircle size={16} />
+                    WhatsApp
+                  </a>
+                </div>
+
+                {/* Trust strip */}
+                <div className="flex flex-wrap gap-x-5 gap-y-2 pt-5 border-t border-white/8">
+                  {[
+                    { icon: <BadgeCheck size={13} />, label: "FAME-II Eligible" },
+                    { icon: <Shield size={13} />, label: "BIS Certified" },
+                    { icon: <Zap size={13} />, label: "3-Year Warranty" },
+                    { icon: <BadgeCheck size={13} />, label: "ISO 9001" },
+                  ].map((t) => (
+                    <div key={t.label} className="flex items-center gap-1.5 text-gray-500">
+                      <span className="text-gray-600">{t.icon}</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider">
+                        {t.label}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -153,7 +231,6 @@ export default async function ModelPage({
               data-aos-delay="100"
               className="relative flex items-center justify-center h-[400px] md:h-[550px]"
             >
-              {/* Glow behind image */}
               <div
                 className="absolute inset-0 rounded-full blur-3xl opacity-20"
                 style={{ background: model.accentColor }}
@@ -174,28 +251,16 @@ export default async function ModelPage({
       </section>
 
       {/* ─────────────────────────────────────────
-          COLOR PICKER STRIP
+          COLOR PICKER STRIP — INTERACTIVE
       ───────────────────────────────────────── */}
       <section className="bg-[#0f0f14] border-y border-white/5 py-8">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-gray-400 text-sm font-semibold uppercase tracking-wider">
             Available Colors
           </p>
-          <div className="flex gap-4">
-            {model.colors.map((c) => (
-              <div key={c.name} className="flex flex-col items-center gap-2 group cursor-pointer">
-                <div
-                  className="w-8 h-8 rounded-full border-2 border-white/20 group-hover:border-white/70 transition-all shadow-lg"
-                  style={{ backgroundColor: c.hex }}
-                />
-                <span className="text-gray-500 text-xs group-hover:text-white transition-colors whitespace-nowrap">
-                  {c.name}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="text-gray-500 text-xs">
-            Visit showroom to see all colors
+          <ColorPickerClient colors={model.colors} />
+          <p className="text-gray-500 text-xs text-center sm:text-right">
+            Visit showroom to see all colors in person
           </p>
         </div>
       </section>
@@ -219,11 +284,32 @@ export default async function ModelPage({
                 key={idx}
                 data-aos="fade-up"
                 data-aos-delay={idx * 60}
-                className="p-7 rounded-3xl border border-gray-100 bg-white card-lift group"
+                className="p-7 rounded-3xl border border-gray-100 bg-white card-lift group relative overflow-hidden"
               >
-                <span className="text-4xl block mb-4">{feat.icon}</span>
-                <h3 className="font-montserrat font-black text-lg text-gray-900 mb-2">{feat.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{feat.desc}</p>
+                {/* Subtle accent hover fill */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300 rounded-3xl"
+                  style={{ background: model.accentColor }}
+                />
+                {/* Icon container with accent ring */}
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-3xl"
+                  style={{
+                    background: `${model.accentColor}12`,
+                    border: `1px solid ${model.accentColor}25`,
+                  }}
+                >
+                  {feat.icon}
+                </div>
+                <h3 className="font-montserrat font-black text-lg text-gray-900 mb-2 relative z-10">
+                  {feat.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed relative z-10">{feat.desc}</p>
+                {/* Accent bottom border on hover */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-3xl"
+                  style={{ background: model.accentColor }}
+                />
               </div>
             ))}
           </div>
@@ -242,7 +328,8 @@ export default async function ModelPage({
           <div data-aos="fade-up" className="text-center mb-20">
             <p className="eyebrow text-accent-red mb-3">Technical Specifications</p>
             <h2 className="font-montserrat font-black text-4xl md:text-5xl text-white">
-              Every Detail. <span className="text-gradient-red">Engineered.</span>
+              Every Detail.{" "}
+              <span className="text-gradient-red">Engineered.</span>
             </h2>
           </div>
 
@@ -252,24 +339,22 @@ export default async function ModelPage({
                 key={gIdx}
                 data-aos="fade-up"
                 data-aos-delay={gIdx * 80}
-                className="bg-white/4 border border-white/8 rounded-3xl overflow-hidden"
+                className="bg-white/[0.04] border border-white/[0.08] rounded-3xl overflow-hidden"
                 style={{ backdropFilter: "blur(10px)" }}
               >
-                {/* Category header */}
                 <div
-                  className="px-6 py-4 border-b border-white/8"
+                  className="px-6 py-4 border-b border-white/[0.08]"
                   style={{ background: `${model.accentColor}18` }}
                 >
                   <h3 className="font-montserrat font-bold text-white text-sm uppercase tracking-wider">
                     {group.category}
                   </h3>
                 </div>
-                {/* Rows */}
                 <div className="divide-y divide-white/5">
                   {group.items.map((item, iIdx) => (
                     <div
                       key={iIdx}
-                      className="flex items-center justify-between px-6 py-4 hover:bg-white/3 transition-colors"
+                      className="flex items-center justify-between px-6 py-4 hover:bg-white/[0.03] transition-colors"
                     >
                       <span className="text-gray-400 text-sm">{item.label}</span>
                       <span className="text-white font-bold text-sm">
@@ -296,7 +381,11 @@ export default async function ModelPage({
             <div data-aos="fade-up" className="text-center mb-14">
               <p className="eyebrow text-accent-red mb-3">Top Reasons to Choose</p>
               <h2 className="font-montserrat font-black text-4xl text-gray-900">
-                Why the <span className="text-gradient-purple">{model.name.replace("RYDEEX ", "")}</span>?
+                Why the{" "}
+                <span className="text-gradient-purple">
+                  {model.name.replace("RYDEEX ", "")}
+                </span>
+                ?
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -317,9 +406,73 @@ export default async function ModelPage({
       </section>
 
       {/* ─────────────────────────────────────────
+          OWNER TESTIMONIALS (conditional)
+      ───────────────────────────────────────── */}
+      {model.testimonials && model.testimonials.length > 0 && (
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <div data-aos="fade-up" className="text-center mb-14">
+              <p className="eyebrow text-accent-red mb-3">Real Owners. Real Stories.</p>
+              <h2 className="font-montserrat font-black text-4xl text-gray-900">
+                What Riders{" "}
+                <span className="text-gradient-red">Are Saying.</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {model.testimonials.map((t, idx) => (
+                <div
+                  key={idx}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 80}
+                  className="bg-gray-50 border border-gray-100 rounded-3xl p-7 card-lift flex flex-col"
+                >
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-4">
+                    {Array.from({ length: t.rating }).map((_, s) => (
+                      <Star key={s} size={14} className="text-amber-400 fill-amber-400" />
+                    ))}
+                  </div>
+                  {/* Quote */}
+                  <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  {/* Author */}
+                  <div className="flex items-center gap-3 pt-5 border-t border-gray-100">
+                    <div
+                      className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-black font-montserrat flex-shrink-0"
+                      style={{ background: model.accentColor }}
+                    >
+                      {t.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-montserrat font-bold text-gray-900 text-sm">{t.name}</p>
+                      <p className="text-gray-400 text-xs">{t.city}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─────────────────────────────────────────
+          SAVINGS CALCULATOR
+      ───────────────────────────────────────── */}
+      <SavingsCalculator priceStr={model.price} accentColor={model.accentColor} />
+
+      {/* ─────────────────────────────────────────
           BOOK TEST RIDE
       ───────────────────────────────────────── */}
-      <TestRideSection />
+      <TestRideSection modelName={model.name} />
+
+      {/* ─────────────────────────────────────────
+          FAQ ACCORDION (conditional)
+      ───────────────────────────────────────── */}
+      {model.faq && model.faq.length > 0 && (
+        <FaqAccordion faq={model.faq} accentColor={model.accentColor} />
+      )}
 
       {/* ─────────────────────────────────────────
           OTHER MODELS
@@ -340,7 +493,7 @@ export default async function ModelPage({
                 href={`/models/${m.slug}`}
                 data-aos="fade-up"
                 data-aos-delay={idx * 80}
-                className="group flex items-center gap-5 p-5 bg-gray-50 border border-gray-100 rounded-2xl hover:border-primary/30 hover:bg-primary/3 transition-all duration-300 card-lift"
+                className="group flex items-center gap-5 p-5 bg-gray-50 border border-gray-100 rounded-2xl hover:border-primary/30 hover:bg-primary/[0.03] transition-all duration-300 card-lift"
               >
                 <div className="relative w-24 h-20 flex-shrink-0 bg-gray-100 rounded-xl overflow-hidden">
                   <Image src={m.image} alt={m.name} fill className="object-cover" />
@@ -368,6 +521,15 @@ export default async function ModelPage({
           </div>
         </div>
       </section>
+
+      {/* ─────────────────────────────────────────
+          STICKY BOTTOM CTA BAR
+      ───────────────────────────────────────── */}
+      <StickyModelCTA
+        modelName={model.name}
+        price={model.price}
+        accentColor={model.accentColor}
+      />
     </>
   );
 }
