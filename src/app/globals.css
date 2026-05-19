@@ -144,6 +144,15 @@ h1, h2, h3, h4, h5, h6 {
 .animate-float { animation: float-y 5s ease-in-out infinite; }
 
 /* ══════════════════════════════════════
+   COLOR SWITCHER PULSE
+══════════════════════════════════════ */
+@keyframes colorPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.8; transform: scale(1.08); }
+}
+.animate-colorPulse { animation: colorPulse 2s ease-in-out infinite; }
+
+/* ══════════════════════════════════════
    CARD LIFT
 ══════════════════════════════════════ */
 .card-lift {
@@ -202,6 +211,15 @@ h1, h2, h3, h4, h5, h6 {
 .animate-dotProgress {
   animation: dotProgress 4.5s linear forwards;
 }
+
+/* ══════════════════════════════════════
+   COLOR PICKER PULSE RING
+══════════════════════════════════════ */
+@keyframes colorPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.06); }
+}
+.animate-colorPulse { animation: colorPulse 1.8s ease-in-out infinite; }
 
 /* ══════════════════════════════════════
    ANIMATION DELAYS

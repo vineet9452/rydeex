@@ -2,11 +2,14 @@ export interface ModelSpec {
   label: string;
   value: string;
   unit?: string;
+  highlight?: boolean;
+  badge?: string;
 }
 
 export interface ModelColor {
   name: string;
   hex: string;
+  image: string;
 }
 
 export interface EVModel {
@@ -49,6 +52,7 @@ export interface EVModel {
   }[];
 
   faq?: { q: string; a: string }[];
+  warranty?: string;
 }
 
 export const models: EVModel[] = [
@@ -80,18 +84,18 @@ export const models: EVModel[] = [
         category: "Performance",
         items: [
           { label: "Motor Type",    value: "BLDC Hub Motor" },
-          { label: "Peak Power",    value: "3000", unit: "W" },
+          { label: "Peak Power",    value: "3000", unit: "W", highlight: true, badge: "Best in class" },
           { label: "Top Speed",     value: "80",   unit: "km/h" },
-          { label: "Acceleration",  value: "0–40 in 4.2", unit: "sec" }
+          { label: "Acceleration",  value: "0–40 in 4.2", unit: "sec", highlight: true, badge: "Segment best" }
         ]
       },
       {
         category: "Battery & Range",
         items: [
           { label: "Battery Capacity", value: "4",   unit: "kWh" },
-          { label: "Certified Range",  value: "120", unit: "km" },
+          { label: "Certified Range",  value: "120", unit: "km", highlight: true, badge: "Best value" },
           { label: "Charge Time",      value: "4",   unit: "hrs" },
-          { label: "Charging",         value: "Standard 5A Home Plug" }
+          { label: "Charging",         value: "Standard 5A Home Plug", highlight: true, badge: "No charger needed" }
         ]
       },
       {
@@ -99,17 +103,17 @@ export const models: EVModel[] = [
         items: [
           { label: "Kerb Weight", value: "110",  unit: "kg" },
           { label: "Seat Height", value: "770",  unit: "mm" },
-          { label: "Boot Space",  value: "24",   unit: "L" },
+          { label: "Boot Space",  value: "24",   unit: "L", highlight: true, badge: "Fits full helmet" },
           { label: "Brakes",      value: "CBS Disc/Drum" }
         ]
       },
       {
         category: "Technology",
         items: [
-          { label: "Display",     value: "7\" Full-Color TFT" },
+          { label: "Display",     value: "7\" Full-Color TFT", highlight: true, badge: "Full color" },
           { label: "Navigation",  value: "Turn-by-Turn GPS" },
           { label: "Connectivity", value: "Bluetooth 5.0" },
-          { label: "Modes",       value: "Eco · City · Sport" }
+          { label: "Modes",       value: "Eco · City · Sport", highlight: true, badge: "3 modes" }
         ]
       }
     ],
@@ -148,9 +152,9 @@ export const models: EVModel[] = [
     ],
 
     colors: [
-      { name: "Matte Blaze Red",  hex: "#c0392b" },
-      { name: "Matte Obsidian",   hex: "#1a1a1a" },
-      { name: "Pearl White",      hex: "#f5f5f0" }
+      { name: "Matte Blaze Red",  hex: "#c0392b", image: "/evies/ev1_red.png" },
+      { name: "Matte Obsidian",   hex: "#1a1a1a", image: "/evies/ev1_black.png" },
+      { name: "Pearl White",      hex: "#f5f5f0", image: "/evies/ev1_white.png" }
     ],
 
     whyThis: [
@@ -159,6 +163,8 @@ export const models: EVModel[] = [
       "Most popular model — 1,200+ units sold",
       "3-year comprehensive warranty included"
     ],
+
+    warranty: "3 Years",
 
     testimonials: [
       {
@@ -297,9 +303,9 @@ export const models: EVModel[] = [
     ],
 
     colors: [
-      { name: "Matte Midnight Black", hex: "#111111" },
-      { name: "Midnight Blue",        hex: "#1a237e" },
-      { name: "Slate Grey",           hex: "#607d8b" }
+      { name: "Matte Midnight Black", hex: "#111111", image: "/evies/ev2_black.png" },
+      { name: "Midnight Blue",        hex: "#1a237e", image: "/evies/ev2_blue.png" },
+      { name: "Slate Grey",           hex: "#607d8b", image: "/evies/ev2_grey.png" }
     ],
 
     whyThis: [
@@ -307,7 +313,8 @@ export const models: EVModel[] = [
       "Ideal for 15–30 km daily commutes",
       "Lowest purchase price — best entry EV",
       "2-year battery + motor warranty"
-    ]
+    ],
+    warranty: "2 Years"
   },
 
   {
@@ -406,9 +413,9 @@ export const models: EVModel[] = [
     ],
 
     colors: [
-      { name: "Racing Blue",   hex: "#1565c0" },
-      { name: "Phantom Black", hex: "#0d0d0d" },
-      { name: "Slate Gunmetal", hex: "#37474f" }
+      { name: "Racing Blue",   hex: "#1565c0", image: "/evies/ev3_blue.png" },
+      { name: "Phantom Black", hex: "#0d0d0d", image: "/evies/ev3_black.png" },
+      { name: "Slate Gunmetal", hex: "#37474f", image: "/evies/ev3_gunmetal.png" }
     ],
 
     whyThis: [
@@ -416,7 +423,8 @@ export const models: EVModel[] = [
       "160 km range — best in segment by 25%",
       "OTA software updates — gets better over time",
       "5-year flagship warranty package"
-    ]
+    ],
+    warranty: "5 Years"
   },
 
   {
@@ -486,8 +494,9 @@ export const models: EVModel[] = [
     ],
 
     colors: [
-      { name: "Mint Green", hex: "#a7f3d0" },
-      { name: "Matte White", hex: "#ffffff" }
+      { name: "Mint Green",  hex: "#a7f3d0", image: "/evies/ev4_green.png" },
+      { name: "Matte White", hex: "#ffffff", image: "/evies/ev4_white.png" },
+      { name: "Ocean Blue",  hex: "#1e88e5", image: "/evies/ev4_blue.png" }
     ],
 
     whyThis: [
@@ -564,8 +573,9 @@ export const models: EVModel[] = [
     ],
 
     colors: [
-      { name: "Neon Orange", hex: "#fb923c" },
-      { name: "Matte Black", hex: "#000000" }
+      { name: "Neon Orange", hex: "#fb923c", image: "/evies/ev5_orange.png" },
+      { name: "Matte Black", hex: "#000000", image: "/evies/ev5_black.png" },
+      { name: "Racing Red",  hex: "#dc2626", image: "/evies/ev5_red.png" }
     ],
 
     whyThis: [
@@ -642,8 +652,9 @@ export const models: EVModel[] = [
     ],
 
     colors: [
-      { name: "Burgundy Maroon", hex: "#7a1a2e" },
-      { name: "Chrome Silver", hex: "#e2e8f0" }
+      { name: "Burgundy Maroon", hex: "#7a1a2e", image: "/evies/ev6_maroon.png" },
+      { name: "Chrome Silver",  hex: "#e2e8f0", image: "/evies/ev6_silver.png" },
+      { name: "Midnight Black", hex: "#111111", image: "/evies/ev6_black.png" }
     ],
 
     whyThis: [

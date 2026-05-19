@@ -14,8 +14,10 @@ import {
 import { models, getModelBySlug } from "@/lib/models";
 import TestRideSection from "@/components/sections/TestRideSection";
 import StickyModelCTA from "@/components/StickyModelCTA";
-import ColorPickerClient from "@/components/ColorPickerClient";
+import ColorSwitcher from "@/components/ColorSwitcher";
 import SavingsCalculator from "@/components/sections/SavingsCalculator";
+import StatsStrip from "@/components/sections/StatsStrip";
+import ComparisonTable from "@/components/sections/ComparisonTable";
 import FaqAccordion from "@/components/FaqAccordion";
 import type { Metadata } from "next";
 
@@ -51,6 +53,23 @@ export default async function ModelPage({
   const waMessage = encodeURIComponent(
     `Hi! I am interested in the ${model.name}. Please share more details.`
   );
+
+  // Derive animated stats from model data
+  const rangeKm = parseInt(model.quickSpecs.find((s) => s.label === "Range")?.value ?? "100");
+  const batteryKwh = parseFloat(
+    model.quickSpecs.find((s) => s.label === "Battery")?.value ?? "4"
+  );
+  const topSpeed = parseInt(
+    model.quickSpecs.find((s) => s.label === "Top Speed")?.value ?? "80"
+  );
+  const evCostPerKm = parseFloat(((batteryKwh / rangeKm) * 8).toFixed(2));
+
+  const statsData = [
+    { value: topSpeed, suffix: " km/h", label: "Top Speed" },
+    { value: rangeKm, suffix: " km", label: "Real Range" },
+    { value: evCostPerKm, suffix: "/km", prefix: "₹", label: "Running Cost", decimals: 2 },
+    { value: 4.8, suffix: "★", label: "Avg. Rating", decimals: 1 },
+  ];
 
   return (
     <>
@@ -225,24 +244,12 @@ export default async function ModelPage({
               </div>
             </div>
 
-            {/* Right — floating scooter image */}
-            <div
-              data-aos="fade-left"
-              data-aos-delay="100"
-              className="relative flex items-center justify-center h-[400px] md:h-[550px]"
-            >
-              <div
-                className="absolute inset-0 rounded-full blur-3xl opacity-20"
-                style={{ background: model.accentColor }}
-              />
-              <Image
-                src={model.image}
-                alt={model.name}
-                fill
-                className="object-contain animate-float drop-shadow-2xl"
-                priority
-              />
-            </div>
+            {/* Right — floating scooter image + color picker */}
+            <ColorSwitcher
+              colors={model.colors}
+              modelName={model.name}
+              accentColor={model.accentColor}
+            />
           </div>
         </div>
 
@@ -250,20 +257,11 @@ export default async function ModelPage({
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0f] to-transparent pointer-events-none" />
       </section>
 
+
       {/* ─────────────────────────────────────────
-          COLOR PICKER STRIP — INTERACTIVE
+          STATS STRIP — ANIMATED COUNTERS
       ───────────────────────────────────────── */}
-      <section className="bg-[#0f0f14] border-y border-white/5 py-8">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-gray-400 text-sm font-semibold uppercase tracking-wider">
-            Available Colors
-          </p>
-          <ColorPickerClient colors={model.colors} />
-          <p className="text-gray-500 text-xs text-center sm:text-right">
-            Visit showroom to see all colors in person
-          </p>
-        </div>
-      </section>
+      <StatsStrip stats={statsData} accentColor={model.accentColor} />
 
       {/* ─────────────────────────────────────────
           FEATURES SECTION
@@ -305,7 +303,7 @@ export default async function ModelPage({
                   {feat.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed relative z-10">{feat.desc}</p>
-                {/* Accent bottom border on hover */}
+                {/* Accent bottom border reveal on hover */}
                 <div
                   className="absolute bottom-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-3xl"
                   style={{ background: model.accentColor }}
@@ -317,7 +315,7 @@ export default async function ModelPage({
       </section>
 
       {/* ─────────────────────────────────────────
-          FULL SPECS TABLE (DARK)
+          FULL SPECS TABLE (DARK) — WITH HIGHLIGHTS
       ───────────────────────────────────────── */}
       <section id="specs" className="py-28 bg-[#0a0a0f] relative overflow-hidden">
         <div
@@ -354,15 +352,35 @@ export default async function ModelPage({
                   {group.items.map((item, iIdx) => (
                     <div
                       key={iIdx}
-                      className="flex items-center justify-between px-6 py-4 hover:bg-white/[0.03] transition-colors"
+                      className={`flex items-center justify-between px-6 py-4 transition-colors ${
+                        item.highlight
+                          ? "bg-white/[0.02] hover:bg-white/[0.04]"
+                          : "hover:bg-white/[0.03]"
+                      }`}
                     >
                       <span className="text-gray-400 text-sm">{item.label}</span>
-                      <span className="text-white font-bold text-sm">
-                        {item.value}
-                        {item.unit && (
-                          <span className="text-gray-400 font-normal ml-1">{item.unit}</span>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="font-bold text-sm"
+                          style={item.highlight ? { color: model.accentColor } : { color: "#ffffff" }}
+                        >
+                          {item.value}
+                          {item.unit && (
+                            <span className="text-gray-400 font-normal ml-1">{item.unit}</span>
+                          )}
+                        </span>
+                        {item.highlight && item.badge && (
+                          <span
+                            className="text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full whitespace-nowrap"
+                            style={{
+                              background: `${model.accentColor}22`,
+                              color: model.accentColor,
+                            }}
+                          >
+                            {item.badge}
+                          </span>
                         )}
-                      </span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -404,6 +422,11 @@ export default async function ModelPage({
           </div>
         </div>
       </section>
+
+      {/* ─────────────────────────────────────────
+          EV VS PETROL COMPARISON TABLE
+      ───────────────────────────────────────── */}
+      <ComparisonTable model={model} />
 
       {/* ─────────────────────────────────────────
           OWNER TESTIMONIALS (conditional)
@@ -475,7 +498,7 @@ export default async function ModelPage({
       )}
 
       {/* ─────────────────────────────────────────
-          OTHER MODELS
+          OTHER MODELS — WITH PRICE
       ───────────────────────────────────────── */}
       <section className="py-28 bg-white">
         <div className="container mx-auto px-4">
@@ -499,8 +522,15 @@ export default async function ModelPage({
                   <Image src={m.image} alt={m.name} fill className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-montserrat font-black text-gray-900 text-base leading-tight mb-1">
+                  <p className="font-montserrat font-black text-gray-900 text-base leading-tight mb-0.5">
                     {m.name}
+                  </p>
+                  {/* Price now visible */}
+                  <p
+                    className="font-montserrat font-black text-sm mb-1.5"
+                    style={{ color: m.accentColor }}
+                  >
+                    {m.price}
                   </p>
                   <p className="text-gray-400 text-xs mb-2">{m.tagline}</p>
                   <div className="flex gap-2">
