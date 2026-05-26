@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${montserrat.variable} antialiased scroll-smooth`}>
-      <body className="bg-background text-gray-900 min-h-screen flex flex-col font-sans">
+      <body className="bg-background text-gray-900 min-h-screen flex flex-col font-sans overflow-x-hidden">
           <AosInit />
           <Header />
           <main className="flex-grow">{children}</main>
