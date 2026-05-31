@@ -95,37 +95,39 @@ export default function HeroSlider() {
   const slide = slides[current];
 
   return (
-    <section className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-[#080810]">
-      {/* ── BACKGROUND IMAGES (CROSS-FADE) ── */}
-      {slides.map((s, i) => (
-        <div
-          key={i}
-          className="absolute inset-0 z-0 transition-opacity duration-[800ms] ease-in-out"
-          style={{ opacity: i === current ? 1 : 0 }}
-        >
-          <Image
-            src={s.image}
-            alt={s.title}
-            fill
-            className="object-cover object-center sm:object-center"
-            priority={i === 0}
-            sizes="100vw"
-          />
-        </div>
-      ))}
-
-      {/* ── GRADIENT OVERLAYS ── */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#080810] via-[#080810]/60 to-[#080810]/20 sm:via-[#080810]/40 sm:to-transparent" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080810]/90 via-[#080810]/50 to-transparent sm:from-[#080810]/80 sm:via-[#080810]/30" />
+    <section className="relative min-h-[100svh] w-full flex flex-col justify-start sm:justify-center overflow-hidden bg-[#080810]">
+      
+      {/* ── MOBILE IMAGE AREA (Top half) / DESKTOP BG ── */}
+      <div className="relative w-full aspect-[16/10] sm:aspect-auto sm:absolute sm:inset-0 sm:h-auto z-0 overflow-hidden">
+        {slides.map((s, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 transition-opacity duration-[800ms] ease-in-out"
+            style={{ opacity: i === current ? 1 : 0 }}
+          >
+            <Image
+              src={s.image}
+              alt={s.title}
+              fill
+              className="object-cover object-center scale-[1.35] sm:scale-100"
+              priority={i === 0}
+              sizes="100vw"
+            />
+          </div>
+        ))}
+        {/* Gradients only visible on desktop to blend text */}
+        <div className="hidden sm:block absolute inset-0 z-[1] bg-gradient-to-t via-[#080810]/40 to-transparent" />
+        <div className="hidden sm:block absolute inset-0 z-[1] bg-gradient-to-r from-[#080810]/80 via-[#080810]/30 to-transparent" />
+      </div>
 
       {/* ── ANIMATED ACCENT GLOW ── */}
       <div
-        className={`absolute bottom-0 left-0 w-[280px] sm:w-[600px] h-[200px] sm:h-[400px] rounded-full blur-[80px] sm:blur-[150px] z-[1] transition-all duration-[800ms] bg-gradient-to-br ${slide.glowFrom} ${slide.glowTo}`}
+        className={`hidden sm:block absolute sm:bottom-0 sm:left-0 sm:translate-x-0 sm:w-[600px] sm:h-[400px] rounded-full sm:blur-[150px] z-[1] transition-all duration-[800ms] bg-gradient-to-br ${slide.glowFrom} ${slide.glowTo}`}
       />
 
       {/* ── CONTENT ── */}
-      <div className="container relative z-10 mx-auto px-4 pt-20 pb-24 sm:pt-20 sm:pb-28">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 lg:gap-10">
+      <div className="container relative z-10 mx-auto px-4 pt-6 pb-20 sm:pt-20 sm:pb-28 flex-1 flex flex-col justify-center">
+        <div className="max-w-6xl w-full mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 lg:gap-10">
 
           {/* ── LEFT ── */}
           <div className="text-left w-full lg:max-w-[560px]">

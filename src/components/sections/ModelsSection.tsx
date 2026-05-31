@@ -106,13 +106,13 @@ export default function ModelsSection() {
               <div className="p-6">
                 <h3 className="font-montserrat font-black text-xl text-white mb-4">{model.name}</h3>
 
-                <div className="flex gap-2 mb-6 flex-wrap">
+                <div className="flex gap-1.5 xl:gap-2 mb-6 flex-nowrap justify-start sm:justify-between overflow-hidden">
                   {[
                     { label: "⚡ " + model.speed },
                     { label: "🔋 " + model.range },
                     { label: "🔌 " + model.battery }
                   ].map((spec) => (
-                    <span key={spec.label} className="bg-white/8 border border-white/10 text-white/70 text-xs font-semibold px-3 py-1.5 rounded-full">
+                    <span key={spec.label} className="bg-white/8 border border-white/10 text-white/70 text-[10px] sm:text-[11px] xl:text-xs font-semibold px-2 py-1.5 rounded-full whitespace-nowrap text-center">
                       {spec.label}
                     </span>
                   ))}
