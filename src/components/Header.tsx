@@ -24,10 +24,10 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
         scrolled
           ? "bg-[#07070d]/90 backdrop-blur-2xl shadow-[0_4px_40px_rgba(0,0,0,0.6)] border-b border-white/8"
-          : "bg-transparent border-b border-transparent"
+          : "max-md:bg-[#07070d]/95 max-md:backdrop-blur-2xl max-md:shadow-[0_4px_40px_rgba(0,0,0,0.6)] max-md:border-b max-md:border-white/8 bg-transparent border-b border-transparent"
       }`}
     >
       {/* Top shimmer line — only on scroll */}
